@@ -2,17 +2,35 @@
 //  Messenger_SwiftUIApp.swift
 //  Messenger-SwiftUI
 //
-//  Created by darktech4 on 12/12/2023.
+//  Created by iamblue on 12/12/2023.
 //
 
 import SwiftUI
 import SwiftData
 
 @main
-struct Messenger_SwiftUIApp: App {
+struct InstagramApp: App {
+    @StateObject var coordinator = Coordinator.shared
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            NavigationStack(path: $coordinator.path) {
+                Group{
+                    ContentView()
+                }
+                .environmentObject(coordinator)
+                .navigationBarHidden(true)
+                .navigationDestination(for: Page.self) { page in
+                    coordinator.build(page: page)
+                }
+                .sheet(item: $coordinator.sheet) { sheet in
+                    coordinator.build(sheet: sheet)
+                }
+                .fullScreenCover(item: $coordinator.fullScreenCover) { fullScreencover in
+                    coordinator.build(fullScreenCover: fullScreencover)
+                }
+            }
         }
     }
 }
+
