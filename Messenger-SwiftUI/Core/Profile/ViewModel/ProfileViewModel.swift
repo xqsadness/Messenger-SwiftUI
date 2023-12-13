@@ -26,7 +26,6 @@ class ProfileViewModel{
         guard let uiImage = UIImage(data: data) else { return }
         
         self.profileImage = Image(uiImage: uiImage)
-        
     }
     
 }
