@@ -22,6 +22,9 @@
 		DDC7282A2B293EF200B068E6 /* ActiveNowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC728292B293EF200B068E6 /* ActiveNowView.swift */; };
 		DDC7282C2B29425200B068E6 /* InboxRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC7282B2B29425200B068E6 /* InboxRowView.swift */; };
 		DDC7282F2B2947F400B068E6 /* NewMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC7282E2B2947F400B068E6 /* NewMessageView.swift */; };
+		DDC728342B29514900B068E6 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC728332B29514900B068E6 /* ProfileView.swift */; };
+		DDC728362B29538300B068E6 /* SettingOptionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC728352B29538300B068E6 /* SettingOptionsViewModel.swift */; };
+		DDC728382B29599C00B068E6 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC728372B29599C00B068E6 /* ProfileViewModel.swift */; };
 		DDD1E2362B28141A0047F456 /* Messenger_SwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD1E2352B28141A0047F456 /* Messenger_SwiftUIApp.swift */; };
 		DDD1E2382B28141A0047F456 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD1E2372B28141A0047F456 /* ContentView.swift */; };
 		DDD1E23C2B28141B0047F456 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DDD1E23B2B28141B0047F456 /* Assets.xcassets */; };
@@ -46,6 +49,9 @@
 		DDC728292B293EF200B068E6 /* ActiveNowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveNowView.swift; sourceTree = "<group>"; };
 		DDC7282B2B29425200B068E6 /* InboxRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InboxRowView.swift; sourceTree = "<group>"; };
 		DDC7282E2B2947F400B068E6 /* NewMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMessageView.swift; sourceTree = "<group>"; };
+		DDC728332B29514900B068E6 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		DDC728352B29538300B068E6 /* SettingOptionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingOptionsViewModel.swift; sourceTree = "<group>"; };
+		DDC728372B29599C00B068E6 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		DDD1E2322B28141A0047F456 /* Messenger-SwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Messenger-SwiftUI.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DDD1E2352B28141A0047F456 /* Messenger_SwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Messenger_SwiftUIApp.swift; sourceTree = "<group>"; };
 		DDD1E2372B28141A0047F456 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -109,6 +115,32 @@
 				DDC7282E2B2947F400B068E6 /* NewMessageView.swift */,
 			);
 			path = NewMessage;
+			sourceTree = "<group>";
+		};
+		DDC728302B29511100B068E6 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				DDC728312B29512C00B068E6 /* View */,
+				DDC728322B29513100B068E6 /* ViewModel */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		DDC728312B29512C00B068E6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DDC728332B29514900B068E6 /* ProfileView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		DDC728322B29513100B068E6 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				DDC728352B29538300B068E6 /* SettingOptionsViewModel.swift */,
+				DDC728372B29599C00B068E6 /* ProfileViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		DDD1E2292B28141A0047F456 = {
@@ -177,6 +209,7 @@
 				DDD1E24B2B2814FD0047F456 /* Authentication */,
 				DDC728252B293C8800B068E6 /* Inbox */,
 				DDC7282D2B2947DA00B068E6 /* NewMessage */,
+				DDC728302B29511100B068E6 /* Profile */,
 				DDD1E24C2B2815090047F456 /* Root */,
 			);
 			path = Core;
@@ -297,6 +330,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DDD1E24F2B2815370047F456 /* LoginView.swift in Sources */,
+				DDC728362B29538300B068E6 /* SettingOptionsViewModel.swift in Sources */,
 				DDD1E2382B28141A0047F456 /* ContentView.swift in Sources */,
 				DD09E8D62B283EFC00235491 /* Font.swift in Sources */,
 				DD09E8DA2B28472F00235491 /* RegistrationView.swift in Sources */,
@@ -308,6 +342,8 @@
 				DDC728272B293CA800B068E6 /* InboxView.swift in Sources */,
 				DD09E8C32B28396400235491 /* Appcontroller.swift in Sources */,
 				DDC7282A2B293EF200B068E6 /* ActiveNowView.swift in Sources */,
+				DDC728342B29514900B068E6 /* ProfileView.swift in Sources */,
+				DDC728382B29599C00B068E6 /* ProfileViewModel.swift in Sources */,
 				DD09E8D02B283EFC00235491 /* Color.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
