@@ -6,11 +6,11 @@
 //
 
 import SwiftUI
+import Observation
 
 struct LoginView: View {
     @EnvironmentObject var coordinator: Coordinator
-    @State private var email = ""
-    @State private var password = ""
+    @Bindable var viewModel = LoginViewModel()
     
     var body: some View {
         VStack{
@@ -20,7 +20,7 @@ struct LoginView: View {
             Image(.messengerLogo)
                 .resizable()
                 .scaledToFit()
-                .frame(width: 150, height: 150)
+                .frame(width: 140, height: 140)
                 .padding()
             
             //text field
@@ -35,6 +35,8 @@ struct LoginView: View {
             //facebook login
             facebookLogin
             
+            Spacer()
+
             //sign up link
             signupLink
         }
@@ -49,14 +51,14 @@ struct LoginView: View {
 extension LoginView{
     private var textfield: some View{
         VStack(spacing: 12){
-            TextField("Enter your email", text: $email)
+            TextField("Enter your email", text: $viewModel.email)
                 .font(.regular(size: 16))
                 .padding(12)
                 .background(Color(.systemGray6))
                 .cornerRadius(10)
                 .padding(.horizontal, 24)
             
-            SecureField("Enter your password", text: $password)
+            SecureField("Enter your password", text: $viewModel.password)
                 .font(.regular(size: 16))
                 .padding(12)
                 .background(Color(.systemGray6))
@@ -79,7 +81,7 @@ extension LoginView{
     
     private var loginButton: some View{
         Button{
-            
+            Task { try await viewModel.login() }
         }label: {
             Text("Login")
                 .font(.semibold(size: 14))
@@ -115,8 +117,6 @@ extension LoginView{
                     .foregroundStyle(.blue)
             }
             .padding(.top, 8)
-            
-            Spacer()
         }
     }
     

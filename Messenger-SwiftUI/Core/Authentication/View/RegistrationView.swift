@@ -6,9 +6,13 @@
 //
 
 import SwiftUI
+import Observation
 
 struct RegistrationView: View {
     @EnvironmentObject var coordinator: Coordinator
+    
+    @Bindable var viewModel = RegistrationViewModel()
+    
     @State private var email = ""
     @State private var password = ""
     @State private var fullname = ""
@@ -46,21 +50,21 @@ struct RegistrationView: View {
 extension RegistrationView{
     private var textfield: some View{
         VStack(spacing: 12){
-            TextField("Enter your email", text: $email)
+            TextField("Enter your email", text: $viewModel.email)
                 .font(.regular(size: 16))
                 .padding(12)
                 .background(Color(.systemGray6))
                 .cornerRadius(10)
                 .padding(.horizontal, 24)
             
-            TextField("Enter your fullname", text: $fullname)
+            TextField("Enter your fullname", text: $viewModel.fullname)
                 .font(.regular(size: 16))
                 .padding(12)
                 .background(Color(.systemGray6))
                 .cornerRadius(10)
                 .padding(.horizontal, 24)
             
-            SecureField("Enter your password", text: $password)
+            SecureField("Enter your password", text: $viewModel.password)
                 .font(.regular(size: 16))
                 .padding(12)
                 .background(Color(.systemGray6))
@@ -71,7 +75,7 @@ extension RegistrationView{
     
     private var signUp: some View{
         Button{
-            
+            Task { try await viewModel.createUser() }
         }label: {
             Text("Sign up")
                 .font(.semibold(size: 14))

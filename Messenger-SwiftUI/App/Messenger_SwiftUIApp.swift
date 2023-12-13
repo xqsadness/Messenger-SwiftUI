@@ -28,7 +28,7 @@ struct InstagramApp: App {
         WindowGroup {
             NavigationStack(path: $coordinator.path) {
                 Group{
-                    ContentView()
+                    LoginView()
                 }
                 .environmentObject(coordinator)
                 .navigationBarHidden(true)

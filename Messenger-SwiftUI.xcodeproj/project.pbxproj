@@ -57,6 +57,9 @@
 		DDC7288C2B29A60400B068E6 /* FirebaseRemoteConfigSwift in Frameworks */ = {isa = PBXBuildFile; productRef = DDC7288B2B29A60400B068E6 /* FirebaseRemoteConfigSwift */; };
 		DDC7288E2B29A60400B068E6 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = DDC7288D2B29A60400B068E6 /* FirebaseStorage */; };
 		DDC728902B29A60400B068E6 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = DDC7288F2B29A60400B068E6 /* FirebaseStorageCombine-Community */; };
+		DDC728942B29A94B00B068E6 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC728932B29A94B00B068E6 /* LoginViewModel.swift */; };
+		DDC728962B29A98C00B068E6 /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC728952B29A98C00B068E6 /* RegistrationViewModel.swift */; };
+		DDC728982B29A9B700B068E6 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC728972B29A9B700B068E6 /* AuthService.swift */; };
 		DDD1E2362B28141A0047F456 /* Messenger_SwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD1E2352B28141A0047F456 /* Messenger_SwiftUIApp.swift */; };
 		DDD1E2382B28141A0047F456 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD1E2372B28141A0047F456 /* ContentView.swift */; };
 		DDD1E23C2B28141B0047F456 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DDD1E23B2B28141B0047F456 /* Assets.xcassets */; };
@@ -89,6 +92,9 @@
 		DDC7283F2B298C9200B068E6 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 		DDC728412B29906100B068E6 /* ChatMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessageCell.swift; sourceTree = "<group>"; };
 		DDC728582B29A55300B068E6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		DDC728932B29A94B00B068E6 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		DDC728952B29A98C00B068E6 /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
+		DDC728972B29A9B700B068E6 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		DDD1E2322B28141A0047F456 /* Messenger-SwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Messenger-SwiftUI.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DDD1E2352B28141A0047F456 /* Messenger_SwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Messenger_SwiftUIApp.swift; sourceTree = "<group>"; };
 		DDD1E2372B28141A0047F456 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -224,6 +230,23 @@
 			path = Chat;
 			sourceTree = "<group>";
 		};
+		DDC728912B29A92300B068E6 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				DDC728932B29A94B00B068E6 /* LoginViewModel.swift */,
+				DDC728952B29A98C00B068E6 /* RegistrationViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		DDC728922B29A93D00B068E6 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				DDC728972B29A9B700B068E6 /* AuthService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
 		DDD1E2292B28141A0047F456 = {
 			isa = PBXGroup;
 			children = (
@@ -317,6 +340,8 @@
 		DDD1E24B2B2814FD0047F456 /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
+				DDC728922B29A93D00B068E6 /* Service */,
+				DDC728912B29A92300B068E6 /* ViewModel */,
 				DDD1E24D2B28152E0047F456 /* View */,
 			);
 			path = Authentication;
@@ -448,6 +473,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				DDC728402B298C9200B068E6 /* ChatView.swift in Sources */,
+				DDC728982B29A9B700B068E6 /* AuthService.swift in Sources */,
+				DDC728962B29A98C00B068E6 /* RegistrationViewModel.swift in Sources */,
 				DDC728422B29906100B068E6 /* ChatMessageCell.swift in Sources */,
 				DDD1E24F2B2815370047F456 /* LoginView.swift in Sources */,
 				DDC7283D2B2963E600B068E6 /* CircularProfileImageView.swift in Sources */,
@@ -467,6 +494,7 @@
 				DDC728342B29514900B068E6 /* ProfileView.swift in Sources */,
 				DDC728382B29599C00B068E6 /* ProfileViewModel.swift in Sources */,
 				DD09E8D02B283EFC00235491 /* Color.swift in Sources */,
+				DDC728942B29A94B00B068E6 /* LoginViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
