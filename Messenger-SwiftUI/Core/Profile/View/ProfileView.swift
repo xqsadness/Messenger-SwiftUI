@@ -13,6 +13,8 @@ struct ProfileView: View {
     @EnvironmentObject var coordinator: Coordinator
     @Bindable var viewModel = ProfileViewModel()
     
+    let user: User
+    
     var body: some View {
         VStack{
             //header
@@ -58,7 +60,7 @@ struct ProfileView: View {
 }
 
 #Preview {
-    ProfileView()
+    ProfileView(user: User.MOCK_USER)
 }
 
 extension ProfileView{
@@ -75,6 +77,10 @@ extension ProfileView{
             }
             .hAlign(.leading)
             .padding(.horizontal)
+            .contentShape(Rectangle())
+            .onTapGesture {
+                coordinator.pop()
+            }
             
             VStack{
                 PhotosPicker(selection: $viewModel.selectedItem){
@@ -85,14 +91,11 @@ extension ProfileView{
                             .frame(width: 80, height: 80)
                             .clipShape(Circle())
                     }else{
-                        Image(systemName: "person.circle.fill")
-                            .resizable()
-                            .frame(width: 80, height: 80)
-                            .foregroundStyle(Color(.systemGray4))
+                        CircularProfileImageView(user: user, size: .xLarge)
                     }
                 }
                 
-                Text("Expensive melon")
+                Text("\(user.fullname)")
                     .font(.semibold(size: 20))
                     .foregroundStyle(.text)
             }

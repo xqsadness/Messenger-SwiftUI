@@ -9,7 +9,8 @@ import SwiftUI
 
 struct InboxView: View {
     @EnvironmentObject var coordinator: Coordinator
-        
+    @State private var user = User.MOCK_USER
+    
     var body: some View {
         VStack{
             header
@@ -36,7 +37,9 @@ struct InboxView: View {
 extension InboxView{
     private var header: some View{
         HStack{
-            Image(systemName: "person.circle.fill")
+            NavigationLink(value: user) {
+                CircularProfileImageView(user: user, size: .small)
+            }
             
             Text("Charts")
                 .font(.semibold(size: 24))

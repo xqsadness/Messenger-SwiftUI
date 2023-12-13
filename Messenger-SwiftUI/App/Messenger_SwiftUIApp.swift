@@ -23,6 +23,11 @@ struct InstagramApp: App {
                 .navigationDestination(for: Page.self) { page in
                     coordinator.build(page: page)
                 }
+                .navigationDestination(for: User.self) { user in
+                    ProfileView(user: user)
+                        .navigationBarBackButtonHidden()
+                        .environmentObject(Coordinator.shared)
+                }
                 .sheet(item: $coordinator.sheet) { sheet in
                     coordinator.build(sheet: sheet)
                 }
