@@ -18,7 +18,7 @@ enum Sheet: String, Identifiable{
 }
 
 enum FullScreenCover: String, Identifiable{
-    case PREMIUM
+    case mewMessageView
     
     var id: String{
         return self.rawValue
@@ -36,12 +36,12 @@ class Coordinator: ObservableObject{
         path.append(page)
     }
     
-    func present(_ sheet: Sheet){
+    func presentSheet(_ sheet: Sheet){
         self.fullScreenCover = nil
         self.sheet = sheet
     }
     
-    func present(_ fullScreenCover: FullScreenCover){
+    func presentFullScreen(_ fullScreenCover: FullScreenCover){
         self.sheet = nil
         self.fullScreenCover = fullScreenCover
     }
@@ -68,8 +68,8 @@ class Coordinator: ObservableObject{
         case .loginView:
             LoginView()
                 .navigationBarBackButtonHidden()
-                .environmentObject(Coordinator.shared) 
-        
+                .environmentObject(Coordinator.shared)
+            
         case .registrationView:
             RegistrationView()
                 .navigationBarBackButtonHidden()
@@ -92,9 +92,9 @@ class Coordinator: ObservableObject{
     @ViewBuilder
     func build(fullScreenCover: FullScreenCover) -> some View{
         switch fullScreenCover{
-            
-        default:
-            EmptyView()
+        case .mewMessageView:
+            NewMessageView()
+                .environmentObject(Coordinator.shared)
         }
     }
 }
