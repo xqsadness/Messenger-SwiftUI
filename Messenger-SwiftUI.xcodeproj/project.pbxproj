@@ -71,6 +71,7 @@
 		DDE0F46E2B2AEE980089F94C /* LocalNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE0F46D2B2AEE980089F94C /* LocalNotification.swift */; };
 		DDE0F4702B2AEEDD0089F94C /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE0F46F2B2AEEDD0089F94C /* NotificationView.swift */; };
 		DDE0F4722B2AEFD20089F94C /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE0F4712B2AEFD20089F94C /* RootView.swift */; };
+		DDE0F4762B2AF9E50089F94C /* InboxViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE0F4752B2AF9E50089F94C /* InboxViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -113,6 +114,7 @@
 		DDE0F46D2B2AEE980089F94C /* LocalNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotification.swift; sourceTree = "<group>"; };
 		DDE0F46F2B2AEEDD0089F94C /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
 		DDE0F4712B2AEFD20089F94C /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		DDE0F4752B2AF9E50089F94C /* InboxViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InboxViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,8 +196,8 @@
 		DDC728252B293C8800B068E6 /* Inbox */ = {
 			isa = PBXGroup;
 			children = (
-				DDC728262B293CA800B068E6 /* InboxView.swift */,
-				DDC7282B2B29425200B068E6 /* InboxRowView.swift */,
+				DDE0F4732B2AF9B80089F94C /* Views */,
+				DDE0F4742B2AF9BD0089F94C /* ViewModel */,
 			);
 			path = Inbox;
 			sourceTree = "<group>";
@@ -398,6 +400,23 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		DDE0F4732B2AF9B80089F94C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				DDC728262B293CA800B068E6 /* InboxView.swift */,
+				DDC7282B2B29425200B068E6 /* InboxRowView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		DDE0F4742B2AF9BD0089F94C /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				DDE0F4752B2AF9E50089F94C /* InboxViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -533,6 +552,7 @@
 				DDE0F4702B2AEEDD0089F94C /* NotificationView.swift in Sources */,
 				DDE0F46E2B2AEE980089F94C /* LocalNotification.swift in Sources */,
 				DDC728382B29599C00B068E6 /* ProfileViewModel.swift in Sources */,
+				DDE0F4762B2AF9E50089F94C /* InboxViewModel.swift in Sources */,
 				DD09E8D02B283EFC00235491 /* Color.swift in Sources */,
 				DDC728942B29A94B00B068E6 /* LoginViewModel.swift in Sources */,
 			);

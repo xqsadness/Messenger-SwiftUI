@@ -25,6 +25,7 @@ class AuthService {
         do{
             let result = try await Auth.auth().signIn(withEmail: email, password: password)
             self.userSession = result.user
+            Task{ try await UserService.shared.fetchCurrentUser() }
         } catch {
             LocalNotification.shared.message("\(error.localizedDescription)", .warning)
             debugPrint("ERROR: Failed to create user with error: \(error.localizedDescription)")
@@ -36,6 +37,7 @@ class AuthService {
         do{
             let result = try await Auth.auth().createUser(withEmail: email, password: password)
             self.userSession = result.user
+            Task{ try await UserService.shared.fetchCurrentUser() }
             try await self.uploadUserData(email: email, fullname: fullname, id: result.user.uid)
         } catch {
             LocalNotification.shared.message("\(error.localizedDescription)", .warning)
@@ -53,6 +55,7 @@ class AuthService {
         }
     }
     
+    @MainActor
     private func uploadUserData(email: String, fullname: String, id: String) async throws{
         let user = User(fullname: fullname, email: email, profileImageUrl: nil)
         

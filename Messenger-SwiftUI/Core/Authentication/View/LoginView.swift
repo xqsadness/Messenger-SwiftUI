@@ -14,7 +14,7 @@ struct LoginView: View {
     
     @EnvironmentObject var coordinator: Coordinator
     
-    @State var viewModel = LoginViewModel()
+    @StateObject var viewModel = LoginViewModel()
     @FocusState private var focusedField: FocusedField?
 
     var body: some View {

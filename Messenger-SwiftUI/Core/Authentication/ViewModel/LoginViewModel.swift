@@ -7,13 +7,13 @@
 
 import Foundation
 
-@Observable
-class LoginViewModel{
+@MainActor
+class LoginViewModel: ObservableObject{
     
-    var isLoading = false
+    @Published var isLoading = false
     
-     var email = ""
-     var password = ""
+    @Published var email = ""
+    @Published var password = ""
     
     func login() async throws{
         isLoading = true
