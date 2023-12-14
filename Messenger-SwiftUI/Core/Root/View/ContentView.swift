@@ -8,10 +8,15 @@
 import SwiftUI
 
 struct ContentView: View {
+    @Bindable var viewModel = ContentViewModel()
     
     var body: some View {
-        VStack{
-            LoginView()
+        Group{
+            if viewModel.userSession != nil{
+                InboxView()
+            }else{
+                LoginView()
+            }
         }
     }
 }

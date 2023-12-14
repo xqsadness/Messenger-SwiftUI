@@ -7,7 +7,6 @@
 
 import SwiftUI
 import PhotosUI
-import Observation
 
 struct ProfileView: View {
     @EnvironmentObject var coordinator: Coordinator
@@ -39,7 +38,8 @@ struct ProfileView: View {
                 
                 Section{
                     Button{
-                        
+                        AuthService.shared.signOut()
+                        coordinator.pop()
                     }label: {
                         Text("Log out")
                             .font(.regular(size: 16))

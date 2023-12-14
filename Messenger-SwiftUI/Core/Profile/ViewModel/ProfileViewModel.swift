@@ -7,7 +7,6 @@
 
 import SwiftUI
 import PhotosUI
-import Observation
 
 @Observable
 class ProfileViewModel{

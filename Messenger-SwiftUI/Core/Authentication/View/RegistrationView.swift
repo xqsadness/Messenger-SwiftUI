@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import Observation
 
 struct RegistrationView: View {
     @EnvironmentObject var coordinator: Coordinator
@@ -75,7 +74,11 @@ extension RegistrationView{
     
     private var signUp: some View{
         Button{
-            Task { try await viewModel.createUser() }
+            Task { try await viewModel.createUser()
+                if AuthService.shared.userSession != nil{
+                    coordinator.pop()
+                }
+            }
         }label: {
             Text("Sign up")
                 .font(.semibold(size: 14))

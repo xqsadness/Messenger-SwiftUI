@@ -15,16 +15,18 @@ struct InboxView: View {
         VStack{
             header
             
+            ActiveNowView()
+            
             ScrollView(showsIndicators: false){
-                ActiveNowView()
-                
-                List{
+                LazyVStack{
                     ForEach(0...10, id: \.self){ message in
                         InboxRowView()
                     }
                 }
-                .listStyle(PlainListStyle())
-                .frame(height: UIScreen.main.bounds.height - 120)
+                .padding(.horizontal,13)
+                //                .scrollIndicators(.hidden)
+                //                .listStyle(PlainListStyle())
+                //                .frame(height: UIScreen.main.bounds.height - 120)
             }
         }
     }

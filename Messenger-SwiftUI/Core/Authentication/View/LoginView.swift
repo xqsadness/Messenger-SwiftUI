@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import Observation
 
 struct LoginView: View {
     @EnvironmentObject var coordinator: Coordinator
