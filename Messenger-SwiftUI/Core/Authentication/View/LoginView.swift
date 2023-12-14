@@ -8,9 +8,15 @@
 import SwiftUI
 
 struct LoginView: View {
-    @EnvironmentObject var coordinator: Coordinator
-    @Bindable var viewModel = LoginViewModel()
+    enum FocusedField {
+        case email, password
+    }
     
+    @EnvironmentObject var coordinator: Coordinator
+    
+    @State var viewModel = LoginViewModel()
+    @FocusState private var focusedField: FocusedField?
+
     var body: some View {
         VStack{
             Spacer()
@@ -35,9 +41,12 @@ struct LoginView: View {
             facebookLogin
             
             Spacer()
-
+            
             //sign up link
             signupLink
+        }
+        .overlay{
+            LoadingView(show: $viewModel.isLoading)
         }
     }
 }
@@ -51,6 +60,7 @@ extension LoginView{
     private var textfield: some View{
         VStack(spacing: 12){
             TextField("Enter your email", text: $viewModel.email)
+                .focused($focusedField, equals: .email)
                 .font(.regular(size: 16))
                 .padding(12)
                 .background(Color(.systemGray6))
@@ -58,11 +68,15 @@ extension LoginView{
                 .padding(.horizontal, 24)
             
             SecureField("Enter your password", text: $viewModel.password)
+                .focused($focusedField, equals: .password)
                 .font(.regular(size: 16))
                 .padding(12)
                 .background(Color(.systemGray6))
                 .cornerRadius(10)
                 .padding(.horizontal, 24)
+        }
+        .onSubmit {
+            login()
         }
     }
     
@@ -80,7 +94,7 @@ extension LoginView{
     
     private var loginButton: some View{
         Button{
-            Task { try await viewModel.login() }
+            login()
         }label: {
             Text("Login")
                 .font(.semibold(size: 14))
@@ -136,6 +150,18 @@ extension LoginView{
             .onTapGesture {
                 coordinator.push(.registrationView)
             }
+        }
+    }
+    
+    //MARK: - funcs
+    private func login(){
+        if viewModel.email.isEmpty {
+            focusedField = .email
+        } else if viewModel.password.isEmpty {
+            focusedField = .password
+        } else {
+            focusedField = nil
+            Task { try await viewModel.login() }
         }
     }
 }

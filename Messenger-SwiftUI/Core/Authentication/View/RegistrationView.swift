@@ -8,13 +8,14 @@
 import SwiftUI
 
 struct RegistrationView: View {
+    enum FocusedField {
+        case email, password, fullname
+    }
+    
     @EnvironmentObject var coordinator: Coordinator
     
-    @Bindable var viewModel = RegistrationViewModel()
-    
-    @State private var email = ""
-    @State private var password = ""
-    @State private var fullname = ""
+    @State var viewModel = RegistrationViewModel()
+    @FocusState private var focusedField: FocusedField?
     
     var body: some View {
         VStack{
@@ -30,13 +31,16 @@ struct RegistrationView: View {
             //text field
             textfield
             
-            signUp
+            signUpText
             
             Spacer()
-
+            
             Divider()
             
-            signIn
+            signInText
+        }
+        .overlay{
+            LoadingView(show: $viewModel.isLoading)
         }
     }
 }
@@ -50,6 +54,7 @@ extension RegistrationView{
     private var textfield: some View{
         VStack(spacing: 12){
             TextField("Enter your email", text: $viewModel.email)
+                .focused($focusedField, equals: .email)
                 .font(.regular(size: 16))
                 .padding(12)
                 .background(Color(.systemGray6))
@@ -57,6 +62,7 @@ extension RegistrationView{
                 .padding(.horizontal, 24)
             
             TextField("Enter your fullname", text: $viewModel.fullname)
+                .focused($focusedField, equals: .fullname)
                 .font(.regular(size: 16))
                 .padding(12)
                 .background(Color(.systemGray6))
@@ -64,21 +70,21 @@ extension RegistrationView{
                 .padding(.horizontal, 24)
             
             SecureField("Enter your password", text: $viewModel.password)
+                .focused($focusedField, equals: .password)
                 .font(.regular(size: 16))
                 .padding(12)
                 .background(Color(.systemGray6))
                 .cornerRadius(10)
                 .padding(.horizontal, 24)
         }
+        .onSubmit {
+            signUp()
+        }
     }
     
-    private var signUp: some View{
+    private var signUpText: some View{
         Button{
-            Task { try await viewModel.createUser()
-                if AuthService.shared.userSession != nil{
-                    coordinator.pop()
-                }
-            }
+            signUp()
         }label: {
             Text("Sign up")
                 .font(.semibold(size: 14))
@@ -90,7 +96,7 @@ extension RegistrationView{
         .padding(.vertical)
     }
     
-    private var signIn: some View{
+    private var signInText: some View{
         HStack(spacing: 3){
             Text("Already have an account ?")
                 .font(.regular(size: 13))
@@ -103,6 +109,24 @@ extension RegistrationView{
         .contentShape(Rectangle())
         .onTapGesture {
             coordinator.pop()
+        }
+    }
+    
+    //MARK: - funcs
+    private func signUp(){
+        if viewModel.email.isEmpty {
+            focusedField = .email
+        }else if viewModel.fullname.isEmpty{
+            focusedField = .fullname
+        }else if viewModel.password.isEmpty {
+            focusedField = .password
+        } else {
+            focusedField = nil
+            Task { try await viewModel.createUser()
+                if AuthService.shared.userSession != nil{
+                    coordinator.pop()
+                }
+            }
         }
     }
 }

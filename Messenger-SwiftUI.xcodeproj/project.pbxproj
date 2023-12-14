@@ -66,6 +66,11 @@
 		DDD1E23C2B28141B0047F456 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DDD1E23B2B28141B0047F456 /* Assets.xcassets */; };
 		DDD1E23F2B28141B0047F456 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DDD1E23E2B28141B0047F456 /* Preview Assets.xcassets */; };
 		DDD1E24F2B2815370047F456 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD1E24E2B2815370047F456 /* LoginView.swift */; };
+		DDE0F46A2B2ADC6B0089F94C /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE0F4692B2ADC6B0089F94C /* UserService.swift */; };
+		DDE0F46C2B2AEC520089F94C /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE0F46B2B2AEC520089F94C /* LoadingView.swift */; };
+		DDE0F46E2B2AEE980089F94C /* LocalNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE0F46D2B2AEE980089F94C /* LocalNotification.swift */; };
+		DDE0F4702B2AEEDD0089F94C /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE0F46F2B2AEEDD0089F94C /* NotificationView.swift */; };
+		DDE0F4722B2AEFD20089F94C /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE0F4712B2AEFD20089F94C /* RootView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -103,6 +108,11 @@
 		DDD1E23B2B28141B0047F456 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DDD1E23E2B28141B0047F456 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		DDD1E24E2B2815370047F456 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		DDE0F4692B2ADC6B0089F94C /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		DDE0F46B2B2AEC520089F94C /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		DDE0F46D2B2AEE980089F94C /* LocalNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotification.swift; sourceTree = "<group>"; };
+		DDE0F46F2B2AEEDD0089F94C /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
+		DDE0F4712B2AEFD20089F94C /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +158,7 @@
 			children = (
 				DD09E8C12B28396400235491 /* Appcontroller.swift */,
 				DD09E8C22B28396400235491 /* Coordinator.swift */,
+				DDE0F46D2B2AEE980089F94C /* LocalNotification.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -235,6 +246,8 @@
 			isa = PBXGroup;
 			children = (
 				DDC7283C2B2963E600B068E6 /* CircularProfileImageView.swift */,
+				DDE0F46B2B2AEC520089F94C /* LoadingView.swift */,
+				DDE0F46F2B2AEEDD0089F94C /* NotificationView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -351,6 +364,7 @@
 		DDD1E2492B2814A00047F456 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				DDE0F4692B2ADC6B0089F94C /* UserService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -370,6 +384,7 @@
 			children = (
 				DDBBF5862B2A90F9002F0C94 /* ViewModel */,
 				DDBBF5852B2A90F5002F0C94 /* View */,
+				DDE0F4712B2AEFD20089F94C /* RootView.swift */,
 			);
 			path = Root;
 			sourceTree = "<group>";
@@ -492,15 +507,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				DDC728402B298C9200B068E6 /* ChatView.swift in Sources */,
+				DDE0F46A2B2ADC6B0089F94C /* UserService.swift in Sources */,
 				DDC728982B29A9B700B068E6 /* AuthService.swift in Sources */,
 				DDC728962B29A98C00B068E6 /* RegistrationViewModel.swift in Sources */,
 				DDC728422B29906100B068E6 /* ChatMessageCell.swift in Sources */,
 				DDD1E24F2B2815370047F456 /* LoginView.swift in Sources */,
+				DDE0F4722B2AEFD20089F94C /* RootView.swift in Sources */,
 				DDC7283D2B2963E600B068E6 /* CircularProfileImageView.swift in Sources */,
 				DDC728362B29538300B068E6 /* SettingOptionsViewModel.swift in Sources */,
 				DDD1E2382B28141A0047F456 /* ContentView.swift in Sources */,
 				DDBBF5882B2A9115002F0C94 /* ContentViewModel.swift in Sources */,
 				DD09E8D62B283EFC00235491 /* Font.swift in Sources */,
+				DDE0F46C2B2AEC520089F94C /* LoadingView.swift in Sources */,
 				DD09E8DA2B28472F00235491 /* RegistrationView.swift in Sources */,
 				DDC7282C2B29425200B068E6 /* InboxRowView.swift in Sources */,
 				DD09E8C42B28396400235491 /* Coordinator.swift in Sources */,
@@ -512,6 +530,8 @@
 				DD09E8C32B28396400235491 /* Appcontroller.swift in Sources */,
 				DDC7282A2B293EF200B068E6 /* ActiveNowView.swift in Sources */,
 				DDC728342B29514900B068E6 /* ProfileView.swift in Sources */,
+				DDE0F4702B2AEEDD0089F94C /* NotificationView.swift in Sources */,
+				DDE0F46E2B2AEE980089F94C /* LocalNotification.swift in Sources */,
 				DDC728382B29599C00B068E6 /* ProfileViewModel.swift in Sources */,
 				DD09E8D02B283EFC00235491 /* Color.swift in Sources */,
 				DDC728942B29A94B00B068E6 /* LoginViewModel.swift in Sources */,
@@ -648,6 +668,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Messenger-SwiftUI/Preview Content\"";
+				DEVELOPMENT_TEAM = PD5C78B8LS;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Messenger-SwiftUI/Info.plist";
@@ -677,6 +698,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Messenger-SwiftUI/Preview Content\"";
+				DEVELOPMENT_TEAM = PD5C78B8LS;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Messenger-SwiftUI/Info.plist";
