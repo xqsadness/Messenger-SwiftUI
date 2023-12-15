@@ -10,7 +10,7 @@ import SwiftUI
 struct ActiveNowView: View {
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false){
-            LazyHStack(spacing: 26){
+            LazyHStack(spacing: 23){
                 ForEach(0...10, id: \.self){ user in
                     VStack{
                         ZStack(alignment: .bottomTrailing){
@@ -30,6 +30,12 @@ struct ActiveNowView: View {
                         Text("James")
                             .foregroundStyle(.gray)
                             .font(.semibold(size: 12))
+                    }
+                    .scrollTransition { content, phase in
+                        content
+                            .opacity(phase.isIdentity ? 1 : 0)
+                            .scaleEffect(phase.isIdentity ? 1 : 0.75)
+                            .blur(radius: phase.isIdentity ? 0 : 10)
                     }
                 }
             }

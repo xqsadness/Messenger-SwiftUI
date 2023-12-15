@@ -25,6 +25,12 @@ struct InboxView: View {
                 LazyVStack{
                     ForEach(0...10, id: \.self){ message in
                         InboxRowView()
+                            .scrollTransition(topLeading: .interactive,bottomTrailing: .interactive){ content, phase in
+                                content
+                                    .opacity(phase.isIdentity ? 1 : 0)
+                                    .scaleEffect(phase.isIdentity ? 1 : 0.75)
+                                    .blur(radius: phase.isIdentity ? 0 : 10)
+                            }
                     }
                 }
                 .padding(.horizontal,13)
