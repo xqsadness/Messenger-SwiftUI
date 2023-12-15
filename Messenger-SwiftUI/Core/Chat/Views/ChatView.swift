@@ -12,7 +12,8 @@ struct ChatView: View {
     @Environment(\.dismiss) var dismiss
     
     @StateObject var viewModel: ChatViewModel
-    
+    @State private var scrolledID: Message?
+
     let user: User
     
     init(user: User){
@@ -27,17 +28,28 @@ struct ChatView: View {
             ScrollView(showsIndicators: false){
                 //header
                 header
-                
+
                 //messages
-                ForEach(viewModel.message){ message in
-                    ChatMessageCell(message: message)
+                LazyVStack{
+                    ForEach(viewModel.message){ message in
+                        ChatMessageCell(message: message)
+                    }
                 }
+                .scrollTargetLayout()
             }
-            
+            .scrollPosition(id: .constant(scrolledID?.id), anchor: .bottom)
+
             //message input
             Spacer()
             
             messageInput
+        }
+        .onAppear{
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2){
+                withAnimation {
+                    scrolledID = viewModel.message.last
+                }
+            }
         }
     }
 }

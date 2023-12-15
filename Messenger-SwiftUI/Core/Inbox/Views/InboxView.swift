@@ -26,14 +26,8 @@ struct InboxView: View {
             
             ScrollView(showsIndicators: false){
                 LazyVStack{
-                    ForEach(0...10, id: \.self){ message in
-                        InboxRowView()
-                            .scrollTransition(topLeading: .interactive,bottomTrailing: .interactive){ content, phase in
-                                content
-                                    .opacity(phase.isIdentity ? 1 : 0)
-                                    .scaleEffect(phase.isIdentity ? 1 : 0.75)
-                                    .blur(radius: phase.isIdentity ? 0 : 10)
-                            }
+                    ForEach(viewModel.recentMessage){ message in
+                        InboxRowView(message: message)
                     }
                 }
                 .padding(.horizontal,13)
@@ -52,6 +46,7 @@ struct InboxView: View {
                             .navigationBarBackButtonHidden()
                     }
                 }
+                
             }
         }
     }
@@ -77,6 +72,7 @@ extension InboxView{
             Button{
 //                coordinator.presentFullScreen(.mewMessageView)÷
                 showNewMessageView.toggle()
+                self.selectedUser = nil
             }label: {
                 Image(systemName: "square.and.pencil.circle.fill")
                     .resizable()
