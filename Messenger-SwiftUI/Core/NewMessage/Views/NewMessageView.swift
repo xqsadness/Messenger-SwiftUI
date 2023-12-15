@@ -9,6 +9,10 @@ import SwiftUI
 
 struct NewMessageView: View {
     @EnvironmentObject var coordinator: Coordinator
+    @Environment(\.dismiss) var dismiss
+    
+    @Binding var selectedUser: User?
+    
     @State private var searchText = ""
     @State private var viewModel = NewMessageViewModel()
     
@@ -44,6 +48,10 @@ struct NewMessageView: View {
                         Divider()
                             .padding(.leading,40)
                     }
+                    .onTapGesture {
+                        selectedUser = user
+                        dismiss()
+                    }
                 }
             }
         }
@@ -51,14 +59,14 @@ struct NewMessageView: View {
 }
 
 #Preview {
-    NewMessageView()
+    NewMessageView(selectedUser: .constant(User.MOCK_USER))
 }
 
 extension NewMessageView{
     private var header: some View{
         HStack{
             Button{
-                coordinator.dissmissFullscreenCover()
+                dismiss()
             }label: {
                 Text("Cancel")
                     .foregroundStyle(.text)

@@ -8,14 +8,15 @@
 import SwiftUI
 
 struct ChatMessageCell: View {
-    let isFromCurrentUser: Bool
+    let message: Message
+    @State private var isAppeared = false
     
     var body: some View {
         HStack{
-            if isFromCurrentUser{
+            if message.isFromCurrentUser{
                 Spacer()
                 
-                Text("This is test message for now")
+                Text("\(message.messageText)")
                     .font(.medium(size: 15))
                     .padding(12)
                     .background(Color(.systemBlue))
@@ -26,7 +27,7 @@ struct ChatMessageCell: View {
                 HStack(alignment: .bottom, spacing: 8){
                     CircularProfileImageView(user: User.MOCK_USER, size: .xxSmall)
                     
-                    Text("This is test message for now, how are you to day? oh wow cool")
+                    Text("\(message.messageText)")
                         .font(.medium(size: 15))
                         .padding(12)
                         .background(Color(.systemGray5))
@@ -39,16 +40,19 @@ struct ChatMessageCell: View {
             }
         }
         .padding(.horizontal, 8)
+        .opacity(isAppeared ? 1 : 0)
+        .offset(x: isAppeared ? 0 : -50)
+        .onAppear {
+            withAnimation {
+                isAppeared = true
+            }
+        }
     }
-}
-
-#Preview {
-    ChatMessageCell(isFromCurrentUser: false)
 }
 
 extension ChatMessageCell{
     private var shapeBubble: some Shape{
-        if isFromCurrentUser{
+        if message.isFromCurrentUser{
             UnevenRoundedRectangle(cornerRadii: .init(topLeading: 14, bottomLeading: 14, topTrailing: 14))
         }else{
             UnevenRoundedRectangle(cornerRadii: .init(topLeading: 14, bottomTrailing: 14, topTrailing: 14))

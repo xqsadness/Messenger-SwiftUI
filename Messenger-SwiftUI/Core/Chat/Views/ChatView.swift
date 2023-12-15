@@ -9,7 +9,16 @@ import SwiftUI
 
 struct ChatView: View {
     @EnvironmentObject var coordinator: Coordinator
-    @State private var messageText = ""
+    @Environment(\.dismiss) var dismiss
+    
+    @StateObject var viewModel: ChatViewModel
+    
+    let user: User
+    
+    init(user: User){
+        self.user = user
+        self._viewModel = StateObject(wrappedValue: ChatViewModel(user: user))
+    }
     
     var body: some View {
         VStack{
@@ -20,8 +29,8 @@ struct ChatView: View {
                 header
                 
                 //messages
-                ForEach(0...15, id: \.self){ message in
-                    ChatMessageCell(isFromCurrentUser: Bool.random())
+                ForEach(viewModel.message){ message in
+                    ChatMessageCell(message: message)
                 }
             }
             
@@ -34,7 +43,7 @@ struct ChatView: View {
 }
 
 #Preview {
-    ChatView()
+    ChatView(user: User.MOCK_USER)
 }
 
 extension ChatView{
@@ -45,29 +54,29 @@ extension ChatView{
                 .foregroundStyle(.text)
             
             Text("Back")
-                .font(.semibold(size: 16))
+                .font(.semibold(size: 14.5))
                 .foregroundStyle(.text)
         }
         .hAlign(.leading)
         .padding(.horizontal)
         .contentShape(Rectangle())
         .overlay{
-            Text("Thai Nga")
+            Text(user.fullname)
                 .font(.semibold(size: 20))
                 .foregroundStyle(.text)
         }
-        .padding(.bottom)
+        .padding(.bottom,3)
         .onTapGesture {
-            coordinator.pop()
+            dismiss()
         }
     }
     
     private var header: some View{
         VStack{
-            CircularProfileImageView(user: User.MOCK_USER, size: .xLarge)
+            CircularProfileImageView(user: user, size: .xLarge)
             
             VStack(spacing: 4){
-                Text("Thai Nga")
+                Text(user.fullname)
                     .font(.semibold(size: 17))
                     .foregroundStyle(.text)
                 
@@ -81,7 +90,7 @@ extension ChatView{
     
     private var messageInput: some View{
         ZStack(alignment: .trailing){
-            TextField("Message...", text: $messageText, axis: .vertical)
+            TextField("Message...", text: $viewModel.messageText, axis: .vertical)
                 .padding(12)
                 .padding(.trailing, 48)
                 .background(Color(.systemGroupedBackground))
@@ -89,7 +98,8 @@ extension ChatView{
                 .font(.regular(size: 14))
             
             Button{
-                
+                viewModel.sendMessage()
+                viewModel.messageText = ""
             }label: {
                 Text("Send")
                     .font(.bold(size: 13.5))

@@ -92,9 +92,9 @@ class Coordinator: ObservableObject{
     @ViewBuilder
     func build(fullScreenCover: FullScreenCover) -> some View{
         switch fullScreenCover{
-        case .mewMessageView:
-            NewMessageView()
-                .environmentObject(Coordinator.shared)
+  
+        default:
+            EmptyView()
         }
     }
 }

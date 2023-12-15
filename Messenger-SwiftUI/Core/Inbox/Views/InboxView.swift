@@ -10,6 +10,9 @@ import SwiftUI
 struct InboxView: View {
     @EnvironmentObject var coordinator: Coordinator
     @StateObject var viewModel = InboxViewModel()
+    @State private var selectedUser: User?
+    @State private var showNewMessageView: Bool = false
+    @State private var showChat: Bool = false
     
     private var user: User? {
         return viewModel.currentUser
@@ -37,6 +40,18 @@ struct InboxView: View {
                 //                .scrollIndicators(.hidden)
                 //                .listStyle(PlainListStyle())
                 //                .frame(height: UIScreen.main.bounds.height - 120)
+                .onChange(of: selectedUser, { _ , newValue in
+                    showChat = newValue != nil
+                })
+                .fullScreenCover(isPresented: $showNewMessageView){
+                    NewMessageView(selectedUser: $selectedUser)
+                }
+                .navigationDestination(isPresented: $showChat) {
+                    if let user = selectedUser{
+                        ChatView(user: user)
+                            .navigationBarBackButtonHidden()
+                    }
+                }
             }
         }
     }
@@ -60,7 +75,8 @@ extension InboxView{
             Spacer()
             
             Button{
-                coordinator.presentFullScreen(.mewMessageView)
+//                coordinator.presentFullScreen(.mewMessageView)÷
+                showNewMessageView.toggle()
             }label: {
                 Image(systemName: "square.and.pencil.circle.fill")
                     .resizable()
