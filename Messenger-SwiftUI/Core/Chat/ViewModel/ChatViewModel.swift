@@ -6,11 +6,13 @@
 //
 
 import Foundation
+import SwiftUI
 
 class ChatViewModel: ObservableObject{
     @Published var messageText = ""
     @Published var message = [Message]()
-    
+    @Published var scrolledID: Message?
+
     let servicce: ChatService
     
     init(user: User) {
@@ -21,6 +23,9 @@ class ChatViewModel: ObservableObject{
     func obeserveMessages(){
         servicce.observeMessages() { messages in
             self.message.append(contentsOf: messages)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2){
+                self.scrolledID = self.message.last
+            }
         }
     }
     

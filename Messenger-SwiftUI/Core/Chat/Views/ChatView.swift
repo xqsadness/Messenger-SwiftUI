@@ -8,12 +8,17 @@
 import SwiftUI
 
 struct ChatView: View {
+    enum FocusedField {
+        case textInput
+    }
+    
     @EnvironmentObject var coordinator: Coordinator
     @Environment(\.dismiss) var dismiss
     
     @StateObject var viewModel: ChatViewModel
-    @State private var scrolledID: Message?
-
+    
+    @FocusState private var focusedField: FocusedField?
+    
     let user: User
     
     init(user: User){
@@ -28,7 +33,7 @@ struct ChatView: View {
             ScrollView(showsIndicators: false){
                 //header
                 header
-
+                
                 //messages
                 LazyVStack{
                     ForEach(viewModel.message){ message in
@@ -37,18 +42,16 @@ struct ChatView: View {
                 }
                 .scrollTargetLayout()
             }
-            .scrollPosition(id: .constant(scrolledID?.id), anchor: .bottom)
-
+            .scrollPosition(id: .constant(viewModel.scrolledID?.id), anchor: .bottom)
+            
             //message input
             Spacer()
             
             messageInput
         }
         .onAppear{
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2){
-                withAnimation {
-                    scrolledID = viewModel.message.last
-                }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1){
+                viewModel.scrolledID = viewModel.message.last
             }
         }
     }
@@ -79,6 +82,7 @@ extension ChatView{
         }
         .padding(.bottom,3)
         .onTapGesture {
+            viewModel.scrolledID = nil
             dismiss()
         }
     }
@@ -103,6 +107,7 @@ extension ChatView{
     private var messageInput: some View{
         ZStack(alignment: .trailing){
             TextField("Message...", text: $viewModel.messageText, axis: .vertical)
+                .focused($focusedField, equals: .textInput)
                 .padding(12)
                 .padding(.trailing, 48)
                 .background(Color(.systemGroupedBackground))
@@ -111,14 +116,21 @@ extension ChatView{
             
             Button{
                 viewModel.sendMessage()
+                withAnimation {
+                    viewModel.scrolledID = viewModel.message.last
+                }
                 viewModel.messageText = ""
+                focusedField = nil
             }label: {
                 Text("Send")
                     .font(.bold(size: 13.5))
                     .foregroundStyle(.blue)
             }
             .padding(.horizontal)
+            .disabled(viewModel.messageText.isEmpty ? true : false)
+            .opacity(viewModel.messageText.isEmpty ? 0.4 : 1)
         }
         .padding(.horizontal)
+        .padding(.bottom)
     }
 }
