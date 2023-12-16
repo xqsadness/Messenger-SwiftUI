@@ -38,7 +38,7 @@ enum SettingOptionsViewModel: Int, CaseIterable, Identifiable{
         switch self {
         case .darkMode: return .black
         case .activeStatus: return Color(.systemGreen)
-        case .accessibility: return .black
+        case .accessibility: return .cyan
         case .privacy: return Color(.systemBlue)
         case .notifications: return Color(.systemPurple)
         }

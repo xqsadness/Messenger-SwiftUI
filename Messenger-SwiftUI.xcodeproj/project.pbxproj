@@ -82,6 +82,7 @@
 		DDFBC9052B2D34BB00A050E9 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDFBC9042B2D34BB00A050E9 /* Date.swift */; };
 		DDFBC9092B2D389A00A050E9 /* ActiveNowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDFBC9082B2D389A00A050E9 /* ActiveNowViewModel.swift */; };
 		DDFBC90C2B2D3B5900A050E9 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDFBC90B2B2D3B5900A050E9 /* Route.swift */; };
+		DDFBC90E2B2D4B9300A050E9 /* ChangeDarkLightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDFBC90D2B2D4B9300A050E9 /* ChangeDarkLightView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -135,6 +136,7 @@
 		DDFBC9042B2D34BB00A050E9 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		DDFBC9082B2D389A00A050E9 /* ActiveNowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveNowViewModel.swift; sourceTree = "<group>"; };
 		DDFBC90B2B2D3B5900A050E9 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
+		DDFBC90D2B2D4B9300A050E9 /* ChangeDarkLightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeDarkLightView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -304,6 +306,7 @@
 			isa = PBXGroup;
 			children = (
 				DDC728332B29514900B068E6 /* ProfileView.swift */,
+				DDFBC90D2B2D4B9300A050E9 /* ChangeDarkLightView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -648,6 +651,7 @@
 				DD09E8DA2B28472F00235491 /* RegistrationView.swift in Sources */,
 				DDC7282C2B29425200B068E6 /* InboxRowView.swift in Sources */,
 				DD09E8C42B28396400235491 /* Coordinator.swift in Sources */,
+				DDFBC90E2B2D4B9300A050E9 /* ChangeDarkLightView.swift in Sources */,
 				DDC7283A2B295DC400B068E6 /* User.swift in Sources */,
 				DDC7282F2B2947F400B068E6 /* NewMessageView.swift in Sources */,
 				DD09E8D72B283EFC00235491 /* Views.swift in Sources */,
@@ -807,8 +811,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -837,8 +841,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

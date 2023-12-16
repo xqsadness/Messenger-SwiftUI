@@ -12,48 +12,76 @@ struct ProfileView: View {
     @EnvironmentObject var coordinator: Coordinator
     @Bindable var viewModel = ProfileViewModel()
     
+    @State var isShowDarkMode = false
+    
     let user: User
     
     var body: some View {
         VStack{
-            //header
-            header
-            
-            //list
-            List{
-                Section{
-                    ForEach(SettingOptionsViewModel.allCases){ option in
-                        HStack{
-                            Image(systemName: option.imageName)
-                                .resizable()
-                                .frame(width: 24, height: 24)
-                                .foregroundStyle(option.imageBackgroundColor)
+            if isShowDarkMode{
+                ChangeDarkLightView(isShowDarkMode: $isShowDarkMode)
+                .transition(.move(edge: .trailing))
+            }else{
+                VStack{
+                    //header
+                    header
+                    
+                    //list
+                    List{
+                        Section{
+                            ForEach(SettingOptionsViewModel.allCases){ option in
+                                HStack{
+                                    Image(systemName: option.imageName)
+                                        .resizable()
+                                        .frame(width: 24, height: 24)
+                                        .foregroundStyle(option.imageBackgroundColor)
+                                    
+                                    Text(option.title)
+                                        .foregroundStyle(.text)
+                                        .font(.regular(size: 16))
+                                }
+                                .onTapGesture {
+                                    switch option{
+                                        
+                                    case .darkMode:
+                                        withAnimation {
+                                            isShowDarkMode.toggle()
+                                        }
+                                    case .activeStatus:
+                                        print(option)
+                                    case .accessibility:
+                                        print(option)
+                                    case .privacy:
+                                        print(option)
+                                    case .notifications:
+                                        print(option)
+                                    }
+                                }
+                            }
+                        }
+                        
+                        Section{
+                            Button{
+                                AuthService.shared.signOut()
+                                coordinator.pop()
+                            }label: {
+                                Text("Log out")
+                                    .font(.regular(size: 16))
+                                    .foregroundStyle(.red)
+                            }
                             
-                            Text(option.title)
-                                .foregroundStyle(.text)
-                                .font(.regular(size: 16))
+                            Button{
+                                
+                            }label: {
+                                Text("Delete account")
+                                    .font(.regular(size: 16))
+                                    .foregroundStyle(.red)
+                            }
                         }
                     }
                 }
-                
-                Section{
-                    Button{
-                        AuthService.shared.signOut()
-                        coordinator.pop()
-                    }label: {
-                        Text("Log out")
-                            .font(.regular(size: 16))
-                            .foregroundStyle(.red)
-                    }
-                    
-                    Button{
-                        
-                    }label: {
-                        Text("Delete account")
-                            .font(.regular(size: 16))
-                            .foregroundStyle(.red)
-                    }
-                }
+                .transition(.move(edge: .leading))
+                .opacity(isShowDarkMode ? 0 : 1)
             }
         }
     }
@@ -88,10 +116,10 @@ extension ProfileView{
                         profileImage
                             .resizable()
                             .scaledToFill()
-                            .frame(width: 80, height: 80)
+                            .frame(width: 100, height: 100)
                             .clipShape(Circle())
                     }else{
-                        CircularProfileImageView(user: user, size: .xLarge)
+                        CircularProfileImageView(user: user, size: .xxLarge)
                     }
                 }
                 
