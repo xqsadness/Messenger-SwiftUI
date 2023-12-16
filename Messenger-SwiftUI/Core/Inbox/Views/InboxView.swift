@@ -22,31 +22,32 @@ struct InboxView: View {
         VStack{
             header
             
-            ActiveNowView()
-            
             ScrollView(showsIndicators: false){
+                ActiveNowView()
+
                 LazyVStack{
                     ForEach(viewModel.recentMessage){ message in
-                        InboxRowView(message: message)
+                        NavigationLink(value: message) {
+                            InboxRowView(message: message)
+                        }
                     }
                 }
                 .padding(.horizontal,13)
                 //                .scrollIndicators(.hidden)
                 //                .listStyle(PlainListStyle())
                 //                .frame(height: UIScreen.main.bounds.height - 120)
-                .onChange(of: selectedUser, { _ , newValue in
-                    showChat = newValue != nil
-                })
-                .fullScreenCover(isPresented: $showNewMessageView){
-                    NewMessageView(selectedUser: $selectedUser)
-                }
-                .navigationDestination(isPresented: $showChat) {
-                    if let user = selectedUser{
-                        ChatView(user: user)
-                            .navigationBarBackButtonHidden()
-                    }
-                }
-                
+            }
+        }
+        .onChange(of: selectedUser, { _ , newValue in
+            showChat = newValue != nil
+        })
+        .fullScreenCover(isPresented: $showNewMessageView){
+            NewMessageView(selectedUser: $selectedUser)
+        }
+        .navigationDestination(isPresented: $showChat) {
+            if let user = selectedUser{
+                ChatView(user: user)
+                    .navigationBarBackButtonHidden()
             }
         }
     }
@@ -59,8 +60,10 @@ struct InboxView: View {
 extension InboxView{
     private var header: some View{
         HStack{
-            NavigationLink(value: user) {
-                CircularProfileImageView(user: user, size: .small)
+            if let user {
+                NavigationLink(value: Route.profile(user)) {
+                    CircularProfileImageView(user: user, size: .small)
+                }
             }
             
             Text("Charts")
@@ -70,7 +73,7 @@ extension InboxView{
             Spacer()
             
             Button{
-//                coordinator.presentFullScreen(.mewMessageView)÷
+                //                coordinator.presentFullScreen(.mewMessageView)÷
                 showNewMessageView.toggle()
                 self.selectedUser = nil
             }label: {

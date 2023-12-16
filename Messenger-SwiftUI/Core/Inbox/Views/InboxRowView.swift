@@ -17,7 +17,7 @@ struct InboxRowView: View {
         HStack(alignment: .top, spacing: 12){
             CircularProfileImageView(user: message.user, size: .medium)
             
-            VStack(alignment: .leading, spacing: 4){
+            VStack(alignment: .leading, spacing: 15){
                 Text("\(message.user?.fullname ?? "")")
                     .foregroundStyle(.text)
                     .font(.bold(size: 14))
@@ -30,7 +30,7 @@ struct InboxRowView: View {
             }
             
             HStack{
-                Text("\(message.timestamp.formatTimestamp())")
+                Text("\(message.timestampString)")
                     .font(.regular(size: 14))
                     .foregroundStyle(.gray)
                 
@@ -53,25 +53,5 @@ struct InboxRowView: View {
                 .scaleEffect(phase.isIdentity ? 1 : 0.75)
                 .blur(radius: phase.isIdentity ? 0 : 10)
         }
-    }
-}
-
-extension Timestamp{
-    func formatTimestamp() -> String {
-        let dateFormatter = DateFormatter()
-        
-        let currentDate = Date()
-        let messageDate = Date(timeIntervalSince1970: TimeInterval(self.seconds))
-        
-        let calendar = Calendar.current
-        let components = calendar.dateComponents([.day], from: messageDate, to: currentDate)
-        
-        if let dayDifference = components.day, dayDifference == 0 {
-            dateFormatter.dateFormat = "HH:mm:ss"
-        } else {
-            dateFormatter.dateFormat = "dd/MM/yyyy"
-        }
-        
-        return dateFormatter.string(from: messageDate)
     }
 }

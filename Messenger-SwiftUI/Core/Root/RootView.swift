@@ -22,10 +22,24 @@ struct RootView: View{
             .navigationDestination(for: Page.self) { page in
                 coordinator.build(page: page)
             }
-            .navigationDestination(for: User.self) { user in
-                ProfileView(user: user)
-                    .navigationBarBackButtonHidden()
-                    .environmentObject(Coordinator.shared)
+            .navigationDestination(for: Route.self) { route in
+                switch route{
+                case .profile(let user):
+                    ProfileView(user: user)
+                        .navigationBarBackButtonHidden()
+                        .environmentObject(Coordinator.shared)
+                case .chatView(let user):
+                    ChatView(user: user)
+                        .navigationBarBackButtonHidden()
+                        .environmentObject(Coordinator.shared)
+                }
+            }
+            .navigationDestination(for: Message.self) { message in
+                if let user = message.user{
+                    ChatView(user: user)
+                        .navigationBarBackButtonHidden()
+                        .environmentObject(Coordinator.shared)
+                }
             }
             .sheet(item: $coordinator.sheet) { sheet in
                 coordinator.build(sheet: sheet)
