@@ -4,7 +4,7 @@ Demo:
 
 [MessageVideoDemo.zip](https://github.com/xqsadness/Messenger-SwiftUI/files/13691245/MessageVideoDemo.zip)
 
-I will update new features and fix some bugs in the future
+I will update new features and fix some bugs in the future !
 
 --------------------------------------------------------------------------------------------------------------------------------------------
 
