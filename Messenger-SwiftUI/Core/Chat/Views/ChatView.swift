@@ -80,7 +80,7 @@ extension ChatView{
                 .font(.semibold(size: 20))
                 .foregroundStyle(.text)
         }
-        .padding(.bottom,3)
+        .padding(.bottom,8)
         .onTapGesture {
             viewModel.scrolledID = nil
             dismiss()
@@ -122,9 +122,9 @@ extension ChatView{
                 viewModel.messageText = ""
                 focusedField = nil
             }label: {
-                Text("Send")
-                    .font(.bold(size: 13.5))
+                Image(systemName: "paperplane.fill")
                     .foregroundStyle(.blue)
+                    .imageScale(.medium)
             }
             .padding(.horizontal)
             .disabled(viewModel.messageText.isEmpty ? true : false)

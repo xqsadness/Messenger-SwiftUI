@@ -36,6 +36,7 @@ class InboxViewModel: ObservableObject {
         service.$documentChanges
             .sink { [weak self] changes in
                 self?.loadInitMessages(fromChanges: changes)
+                
             }
             .store(in: &cancelables)
     }
@@ -46,9 +47,17 @@ class InboxViewModel: ObservableObject {
         for i in 0 ..< messages.count{
             let message = messages[i]
             
-            UserService.fetchUser(withUid: message.chatPartnerID) { user in
+            UserService.fetchUser(withUid: message.chatPartnerID) {  user in
                 messages[i].user = user
-                self.recentMessage.append(messages[i])
+                
+                if let existingIndex = self.recentMessage.firstIndex(where: { $0.messageID == message.chatPartnerID }) {
+                    // Message with the same ID already exists, update it
+                    self.recentMessage[existingIndex] = messages[i]
+                } else {
+                    // Message doesn't exist, append it
+                    self.recentMessage.append(messages[i])
+                }
+                
             }
         }
     }
