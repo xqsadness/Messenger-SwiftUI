@@ -18,10 +18,6 @@ class AuthService {
     init(){
         self.userSession = Auth.auth().currentUser
         loadCurrentUserData()
-        
-        if UserService.shared.currentUser?.uid == nil{
-            self.signOut()
-        }
     }
     
     @MainActor

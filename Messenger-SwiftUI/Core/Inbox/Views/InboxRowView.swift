@@ -22,7 +22,7 @@ struct InboxRowView: View {
                     .foregroundStyle(.text)
                     .font(.bold(size: 14))
                 
-                Text("\(message.messageText)")
+                Text("\(message.id == UserService.shared.currentUser?.id ? "You: " : "") \(message.messageText)")
                     .foregroundStyle(.gray)
                     .font(.regular(size: 14))
                     .lineLimit(2)

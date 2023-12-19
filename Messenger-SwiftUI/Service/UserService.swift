@@ -17,11 +17,19 @@ class UserService{
     
     @MainActor
     func fetchCurrentUser() async throws{
-        guard let uid = Auth.auth().currentUser?.uid else { return }
+        guard let uid = Auth.auth().currentUser?.uid else {
+            
+            return
+        }
         
         let snapshot = try await Firestore.firestore().collection("users").document(uid).getDocument()
-        let user = try snapshot.data(as: User.self)
-        self.currentUser = user
+        if snapshot.exists{
+            let user = try snapshot.data(as: User.self)
+            self.currentUser = user
+        }else{
+            AuthService.shared.signOut()
+        }
+        
     }
     
     @MainActor
@@ -46,5 +54,4 @@ class UserService{
         
         return user
     }
-
 }
