@@ -9,11 +9,11 @@ import SwiftUI
 import Combine
 import Firebase
 
-
 class InboxViewModel: ObservableObject {    
     
     @Published var currentUser: User?
     @Published var recentMessage = [Message]()
+    @Published var isLoading:Bool = true
     
     private var cancelables = Set<AnyCancellable>()
     private var service = InboxService()
@@ -27,12 +27,17 @@ class InboxViewModel: ObservableObject {
         UserService.shared.$currentUser
             .sink { [weak self] user in
                 self?.currentUser = user
+                if user != nil{
+                    self?.isLoading = false
+                }
             }
             .store(in: &cancelables)
         
-        service.$documentChanges.sink { [weak self] changes in
-            self?.loadInitMessages(fromChanges: changes)
-        }.store(in: &cancelables)
+        service.$documentChanges
+            .sink { [weak self] changes in
+                self?.loadInitMessages(fromChanges: changes)
+            }
+            .store(in: &cancelables)
     }
     
     private func loadInitMessages(fromChanges changes: [DocumentChange]){

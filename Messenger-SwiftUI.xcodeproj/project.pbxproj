@@ -18,6 +18,7 @@
 		DD09E8D62B283EFC00235491 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD09E8CE2B283EFC00235491 /* Font.swift */; };
 		DD09E8D72B283EFC00235491 /* Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD09E8CF2B283EFC00235491 /* Views.swift */; };
 		DD09E8DA2B28472F00235491 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD09E8D92B28472F00235491 /* RegistrationView.swift */; };
+		DDB148B02B3023A600080396 /* Shimmer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB148AF2B3023A600080396 /* Shimmer.swift */; };
 		DDBBF5882B2A9115002F0C94 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBBF5872B2A9115002F0C94 /* ContentViewModel.swift */; };
 		DDC6DAB22B2BED9C007828ED /* NewMessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC6DAB12B2BED9C007828ED /* NewMessageViewModel.swift */; };
 		DDC6DAB42B2BF78B007828ED /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC6DAB32B2BF78B007828ED /* Message.swift */; };
@@ -98,6 +99,7 @@
 		DD09E8CF2B283EFC00235491 /* Views.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Views.swift; sourceTree = "<group>"; };
 		DD09E8D82B283FC500235491 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		DD09E8D92B28472F00235491 /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
+		DDB148AF2B3023A600080396 /* Shimmer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shimmer.swift; sourceTree = "<group>"; };
 		DDBBF5872B2A9115002F0C94 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 		DDC6DAB12B2BED9C007828ED /* NewMessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMessageViewModel.swift; sourceTree = "<group>"; };
 		DDC6DAB32B2BF78B007828ED /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
@@ -323,6 +325,7 @@
 		DDC7283B2B2963B400B068E6 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				DDB148AF2B3023A600080396 /* Shimmer.swift */,
 				DDC7283C2B2963E600B068E6 /* CircularProfileImageView.swift */,
 				DDE0F46B2B2AEC520089F94C /* LoadingView.swift */,
 				DDE0F46F2B2AEEDD0089F94C /* NotificationView.swift */,
@@ -661,6 +664,7 @@
 				DD09E8C32B28396400235491 /* Appcontroller.swift in Sources */,
 				DDC7282A2B293EF200B068E6 /* ActiveNowView.swift in Sources */,
 				DDC728342B29514900B068E6 /* ProfileView.swift in Sources */,
+				DDB148B02B3023A600080396 /* Shimmer.swift in Sources */,
 				DDE0F4702B2AEEDD0089F94C /* NotificationView.swift in Sources */,
 				DDFBC9092B2D389A00A050E9 /* ActiveNowViewModel.swift in Sources */,
 				DDE0F46E2B2AEE980089F94C /* LocalNotification.swift in Sources */,

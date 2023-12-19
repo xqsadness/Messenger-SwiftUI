@@ -24,18 +24,19 @@ struct InboxView: View {
             
             ScrollView(showsIndicators: false){
                 ActiveNowView()
-
-                LazyVStack{
-                    ForEach(viewModel.recentMessage){ message in
-                        NavigationLink(value: message) {
-                            InboxRowView(message: message)
+                
+                if viewModel.isLoading{
+                    loadDataShimmering
+                }else{
+                    LazyVStack{
+                        ForEach(viewModel.recentMessage){ message in
+                            NavigationLink(value: message) {
+                                InboxRowView(message: message)
+                            }
                         }
                     }
+                    .padding(.horizontal,13)
                 }
-                .padding(.horizontal,13)
-                //                .scrollIndicators(.hidden)
-                //                .listStyle(PlainListStyle())
-                //                .frame(height: UIScreen.main.bounds.height - 120)
             }
         }
         .onChange(of: selectedUser, { _ , newValue in
@@ -64,6 +65,9 @@ extension InboxView{
                 NavigationLink(value: Route.profile(user)) {
                     CircularProfileImageView(user: user, size: .small)
                 }
+            }else{
+                ProgressView()
+                    .frame(width: 40, height: 40)
             }
             
             Text("Charts")
@@ -85,5 +89,24 @@ extension InboxView{
         }
         .hAlign(.leading)
         .padding(.horizontal)
+    }
+    
+    private var loadDataShimmering: some View{
+        VStack{
+            ForEach(0..<4) { _ in
+                HStack(spacing: 10){
+                    Circle()
+                        .frame(width: 56, height: 56, alignment: .center)
+                        .foregroundStyle(.text).opacity(0.7)
+                    
+                    Rectangle()
+                        .foregroundColor(.text).opacity(0.6)
+                        .cornerRadius(13)
+                }
+                .frame(width: UIScreen.main.bounds.width - 25 ,height: 72)
+                .shimmering(bandSize: 1)
+            }
+        }
+        .padding(.horizontal,13)
     }
 }

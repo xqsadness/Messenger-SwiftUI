@@ -14,7 +14,7 @@ struct LoadingView: View {
             if show{
                 Group{
                     Rectangle()
-                        .fill(.black.opacity(0.4))
+                        .fill(.text.opacity(0.4))
                         .ignoresSafeArea()
                     
                     ProgressView()
