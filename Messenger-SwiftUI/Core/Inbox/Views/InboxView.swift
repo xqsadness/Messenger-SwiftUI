@@ -58,11 +58,6 @@ struct InboxView: View {
                     .navigationBarBackButtonHidden()
             }
         }
-        .onAppear{
-            if UserService.shared.currentUser?.uid == nil{
-                AuthService.shared.signOut()
-            }
-        }
     }
 }
 

@@ -9,7 +9,7 @@ import SwiftUI
 import Combine
 import Firebase
 
-class InboxViewModel: ObservableObject {    
+class InboxViewModel: ObservableObject {
     
     @Published var currentUser: User?
     @Published var recentMessage = [Message]()
