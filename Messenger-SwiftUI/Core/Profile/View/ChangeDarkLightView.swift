@@ -103,7 +103,7 @@ struct ChangeDarkLightView: View {
         case .on:
             colorScheme = "dark"
         case .system:
-            break
+            colorScheme = "nil"
         }
     }
     

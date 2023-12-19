@@ -28,14 +28,21 @@ struct InboxView: View {
                 if viewModel.isLoading{
                     loadDataShimmering
                 }else{
-                    LazyVStack{
-                        ForEach(viewModel.recentMessage){ message in
-                            NavigationLink(value: message) {
-                                InboxRowView(message: message)
+                    if viewModel.recentMessage.isEmpty{
+                        Text("You don't have any conversations!")
+                            .padding(.top,20)
+                            .font(.regular(size: 15))
+                            .foregroundStyle(.text).opacity(0.6)
+                    }else{
+                        LazyVStack{
+                            ForEach(viewModel.recentMessage){ message in
+                                NavigationLink(value: message) {
+                                    InboxRowView(message: message)
+                                }
                             }
                         }
+                        .padding(.horizontal,13)
                     }
-                    .padding(.horizontal,13)
                 }
             }
         }
@@ -49,6 +56,11 @@ struct InboxView: View {
             if let user = selectedUser{
                 ChatView(user: user)
                     .navigationBarBackButtonHidden()
+            }
+        }
+        .onAppear{
+            if UserService.shared.currentUser?.uid == nil{
+                AuthService.shared.signOut()
             }
         }
     }

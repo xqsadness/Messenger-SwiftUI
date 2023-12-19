@@ -25,18 +25,14 @@ class InboxViewModel: ObservableObject {
     
     private func setupSubcribers(){
         UserService.shared.$currentUser
-            .sink { [weak self] user in
+            .combineLatest(service.$documentChanges)
+            .sink { [weak self] user, changes in
                 self?.currentUser = user
+                self?.loadInitMessages(fromChanges: changes)
+                
                 if user != nil{
                     self?.isLoading = false
                 }
-            }
-            .store(in: &cancelables)
-        
-        service.$documentChanges
-            .sink { [weak self] changes in
-                self?.loadInitMessages(fromChanges: changes)
-                
             }
             .store(in: &cancelables)
     }

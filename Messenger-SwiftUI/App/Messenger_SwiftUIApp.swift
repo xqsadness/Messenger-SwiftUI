@@ -22,7 +22,7 @@ struct InstagramApp: App {
     // register app delegate for Firebase setup
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     
-    @AppStorage("colorScheme") var colorScheme = "dark"
+    @AppStorage("colorScheme") var colorScheme = "light"
     
     var body: some Scene {
         WindowGroup {
