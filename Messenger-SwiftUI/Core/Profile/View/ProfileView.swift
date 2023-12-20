@@ -15,7 +15,9 @@ struct ProfileView: View {
     @State var isShowDarkMode = false
     @State private var showingAlertDeleteAccount = false
     
-    let user: User
+    private var user: User? {
+        return UserService.shared.currentUser ?? nil
+    }
     
     var body: some View {
         VStack{
@@ -83,6 +85,9 @@ struct ProfileView: View {
                 }
                 .transition(.move(edge: .leading))
                 .opacity(isShowDarkMode ? 0 : 1)
+                .overlay{
+                    LoadingView(show: $viewModel.isLoading)
+                }
             }
         }
         .alert(isPresented: $showingAlertDeleteAccount) {
@@ -108,7 +113,7 @@ struct ProfileView: View {
 }
 
 #Preview {
-    ProfileView(user: User.MOCK_USER)
+    ProfileView()
 }
 
 extension ProfileView{
@@ -122,6 +127,18 @@ extension ProfileView{
                 Text("Back")
                     .font(.semibold(size: 16))
                     .foregroundStyle(.text)
+                
+                Spacer()
+                
+                if viewModel.profileImage != nil{
+                    Button{
+                        viewModel.upLoadAvatar()
+                    }label: {
+                        Text("Save")
+                            .font(.semibold(size: 16))
+                            .foregroundStyle(.blue)
+                    }
+                }
             }
             .hAlign(.leading)
             .padding(.horizontal)
@@ -133,7 +150,7 @@ extension ProfileView{
             VStack{
                 PhotosPicker(selection: $viewModel.selectedItem){
                     if let profileImage = viewModel.profileImage{
-                        profileImage
+                        Image(uiImage: profileImage)
                             .resizable()
                             .scaledToFill()
                             .frame(width: 100, height: 100)
@@ -143,7 +160,7 @@ extension ProfileView{
                     }
                 }
                 
-                Text("\(user.fullname)")
+                Text("\(user?.fullname ?? "")")
                     .font(.semibold(size: 20))
                     .foregroundStyle(.text)
             }

@@ -24,8 +24,8 @@ struct RootView: View{
             }
             .navigationDestination(for: Route.self) { route in
                 switch route{
-                case .profile(let user):
-                    ProfileView(user: user)
+                case .profile(_):
+                    ProfileView()
                         .navigationBarBackButtonHidden()
                         .environmentObject(Coordinator.shared)
                 case .chatView(let user):

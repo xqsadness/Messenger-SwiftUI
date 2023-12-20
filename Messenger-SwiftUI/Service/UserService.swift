@@ -18,7 +18,6 @@ class UserService{
     @MainActor
     func fetchCurrentUser() async throws{
         guard let uid = Auth.auth().currentUser?.uid else {
-            
             return
         }
         
@@ -29,7 +28,6 @@ class UserService{
         }else{
             AuthService.shared.signOut()
         }
-        
     }
     
     @MainActor

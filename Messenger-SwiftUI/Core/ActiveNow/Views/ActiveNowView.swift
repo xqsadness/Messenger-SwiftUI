@@ -60,7 +60,7 @@ extension ActiveNowView{
     private func avatarName(user: User) -> some View{
         VStack{
             ZStack(alignment: .bottomTrailing){
-                CircularProfileImageView(user: User.MOCK_USER, size: .medium)
+                CircularProfileImageView(user: user, size: .medium)
                 
                 ZStack{
                     Circle()
