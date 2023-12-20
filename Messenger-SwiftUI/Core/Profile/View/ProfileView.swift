@@ -149,14 +149,35 @@ extension ProfileView{
             
             VStack{
                 PhotosPicker(selection: $viewModel.selectedItem){
-                    if let profileImage = viewModel.profileImage{
-                        Image(uiImage: profileImage)
-                            .resizable()
-                            .scaledToFill()
-                            .frame(width: 100, height: 100)
-                            .clipShape(Circle())
-                    }else{
-                        CircularProfileImageView(user: user, size: .xxLarge)
+                    VStack{
+                        if let profileImage = viewModel.profileImage{
+                            Image(uiImage: profileImage)
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: 100, height: 100)
+                                .clipShape(Circle())
+                        }else{
+                            CircularProfileImageView(user: user, size: .xxLarge)
+                        }
+                    }
+                    .overlay {
+                        ZStack(alignment: .bottomTrailing){
+                            Color.black.opacity(0.1)
+                                .clipShape(Circle())
+                            
+                            VStack{
+                                Rectangle()
+                                    .foregroundStyle(.black)
+                                    .cornerRadius(3)
+                            }
+                            .frame(width: 25, height: 20)
+                            .overlay {
+                                Image(systemName: "camera.fill")
+                                    .imageScale(.medium)
+                                    .foregroundStyle(.white)
+                            }
+                            
+                        }
                     }
                 }
                 
