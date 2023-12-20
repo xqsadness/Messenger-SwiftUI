@@ -13,15 +13,14 @@ struct NewMessageView: View {
     
     @Binding var selectedUser: User?
     
-    @State private var searchText = ""
-    @State private var viewModel = NewMessageViewModel()
+    @StateObject private var viewModel = NewMessageViewModel()
     
     var body: some View {
         VStack{
             header
             
             ScrollView(showsIndicators: false){
-                TextField("To: ", text: $searchText)
+                TextField("To: ", text: $viewModel.searchText)
                     .frame(height: 44)
                     .padding(.leading)
                     .background(Color(.systemGroupedBackground))

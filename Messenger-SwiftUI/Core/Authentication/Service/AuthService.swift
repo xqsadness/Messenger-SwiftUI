@@ -57,6 +57,17 @@ class AuthService {
     }
     
     @MainActor
+    func deleteUserData() async throws {
+        let uid = Auth.auth().currentUser?.uid
+        
+        if let uid {
+            let documentReference = FirestoreContants.userCollection.document(uid)
+            try await documentReference.delete()
+            self.signOut()
+        }
+    }
+    
+    @MainActor
     private func uploadUserData(email: String, fullname: String, id: String) async throws{
         let user = User(fullname: fullname, email: email, profileImageUrl: nil)
         

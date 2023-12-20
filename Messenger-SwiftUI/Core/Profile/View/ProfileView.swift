@@ -13,6 +13,7 @@ struct ProfileView: View {
     @Bindable var viewModel = ProfileViewModel()
     
     @State var isShowDarkMode = false
+    @State private var showingAlertDeleteAccount = false
     
     let user: User
     
@@ -71,7 +72,7 @@ struct ProfileView: View {
                             }
                             
                             Button{
-                                
+                                showingAlertDeleteAccount.toggle()
                             }label: {
                                 Text("Delete account")
                                     .font(.regular(size: 16))
@@ -83,6 +84,25 @@ struct ProfileView: View {
                 .transition(.move(edge: .leading))
                 .opacity(isShowDarkMode ? 0 : 1)
             }
+        }
+        .alert(isPresented: $showingAlertDeleteAccount) {
+            Alert(
+                title: Text("Confirm account deletion"),
+                message: Text("Once your account is deleted, you will not be able to restore it. Are you sure you want to delete it?"),
+                primaryButton: .default(
+                    Text("Cancel"),
+                    action: {}
+                ),
+                secondaryButton: .destructive(
+                    Text("Delete"),
+                    action: {
+                        Task{
+                            try await AuthService.shared.deleteUserData()
+                            coordinator.pop()
+                        }
+                    }
+                )
+            )
         }
     }
 }
