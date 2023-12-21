@@ -25,12 +25,11 @@ struct InboxRowView: View {
                 Text("\(message.user?.fullname ?? "")")
                     .foregroundStyle(.text)
                     .font(unread ? .bold(size: 14) : .medium(size: 14))
-                    .padding(.leading,2)
                 
-                Text("\(message.fromId == UserService.shared.currentUser?.id ? "You: " : "") \(message.messageText)")
+                Text("\(message.fromId == UserService.shared.currentUser?.id ? "You: " : "")\(message.messageText)")
                     .foregroundStyle(unread ? .text : .gray)
                     .font(unread ? .bold(size: 14) : .regular(size: 14))
-                    .lineLimit(2)
+                    .lineLimit(1)
                     .frame(maxWidth: UIScreen.main.bounds.width - 100, alignment: .leading)
             }
 

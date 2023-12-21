@@ -16,7 +16,6 @@ struct ChatView: View {
     @Environment(\.dismiss) var dismiss
     
     @StateObject var viewModel: ChatViewModel
-    
     @FocusState private var focusedField: FocusedField?
     
     let user: User
@@ -40,7 +39,7 @@ struct ChatView: View {
                 header
                 
                 //messages
-                LazyVStack{
+                VStack{
                     ForEach(viewModel.message){ message in
                         ChatMessageCell(message: message)
                     }
@@ -78,6 +77,10 @@ extension ChatView{
                 .font(.semibold(size: 14.5))
                 .foregroundStyle(.text)
         }
+        .onTapGesture {
+            viewModel.scrolledID = nil
+            dismiss()
+        }
         .hAlign(.leading)
         .padding(.horizontal)
         .contentShape(Rectangle())
@@ -87,10 +90,6 @@ extension ChatView{
                 .foregroundStyle(.text)
         }
         .padding(.bottom,8)
-        .onTapGesture {
-            viewModel.scrolledID = nil
-            dismiss()
-        }
     }
     
     private var header: some View{
@@ -116,9 +115,12 @@ extension ChatView{
                 .focused($focusedField, equals: .textInput)
                 .padding(12)
                 .padding(.trailing, 48)
-                .background(Color(.systemGroupedBackground))
-                .clipShape(Capsule())
                 .font(.regular(size: 14))
+                .overlay(
+                    RoundedRectangle(cornerRadius: 16)
+                        .inset(by: 0.5)
+                        .stroke(Color.text.opacity(0.3), lineWidth: 0.7)
+                )
             
             Button{
                 viewModel.sendMessage()
@@ -133,10 +135,10 @@ extension ChatView{
                     .imageScale(.medium)
             }
             .padding(.horizontal)
-            .disabled(viewModel.messageText.isEmpty ? true : false)
-            .opacity(viewModel.messageText.isEmpty ? 0.4 : 1)
+            .disabled(viewModel.messageText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ? true : false)
+            .opacity(viewModel.messageText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ? 0.4 : 1)
         }
         .padding(.horizontal)
-        .padding(.bottom)
+        .padding(.bottom, focusedField != nil ? 7 : 0)
     }
 }
