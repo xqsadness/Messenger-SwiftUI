@@ -33,6 +33,6 @@ Clone this repo and delete GoogleService-Info in the project for add your fireba
 <p> - Unsend message </p>
 <p> - Send picture messages </p>
 <p> - Update status </p>
-<p> - ... </p>
-
+<p> - Push notification </p>
+<p> ... </p>
 Updating ... !
