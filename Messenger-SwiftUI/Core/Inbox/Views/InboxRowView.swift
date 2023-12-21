@@ -13,30 +13,35 @@ struct InboxRowView: View {
     
     let message: Message
     
+    var unread: Bool{
+        return UserService.shared.currentUser?.id != message.fromId && message.unread
+    }
+    
     var body: some View {
         HStack(alignment: .top, spacing: 12){
             CircularProfileImageView(user: message.user, size: .medium)
             
-            VStack(alignment: .leading, spacing: 15){
+            VStack(alignment: .leading, spacing: 13){
                 Text("\(message.user?.fullname ?? "")")
                     .foregroundStyle(.text)
-                    .font(.bold(size: 14))
+                    .font(unread ? .bold(size: 14) : .medium(size: 14))
+                    .padding(.leading,2)
                 
-                Text("\(message.id == UserService.shared.currentUser?.id ? "You: " : "") \(message.messageText)")
-                    .foregroundStyle(.gray)
-                    .font(.regular(size: 14))
+                Text("\(message.fromId == UserService.shared.currentUser?.id ? "You: " : "") \(message.messageText)")
+                    .foregroundStyle(unread ? .text : .gray)
+                    .font(unread ? .bold(size: 14) : .regular(size: 14))
                     .lineLimit(2)
                     .frame(maxWidth: UIScreen.main.bounds.width - 100, alignment: .leading)
             }
-            
+
             HStack{
                 Text("\(message.timestampString)")
-                    .font(.regular(size: 14))
-                    .foregroundStyle(.gray)
+                    .foregroundStyle(unread ? .text : .gray)
+                    .font(unread ? .bold(size: 14) : .regular(size: 14))
                 
                 Image(systemName: "chevron.right")
                     .imageScale(.small)
-                    .foregroundStyle(.gray)
+                    .foregroundStyle(unread ? .text : .gray)
             }
         }
         .frame(height: 72)

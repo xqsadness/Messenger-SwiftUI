@@ -24,7 +24,7 @@ struct ChatService{
         
         let messageID = currentUserRef.documentID
         
-        let message = Message(messageID: messageID,fromId: currentUid, toId: chatPartnerId, messageText: messageText, timestamp: Timestamp())
+        let message = Message(messageID: messageID,fromId: currentUid, toId: chatPartnerId, messageText: messageText, timestamp: Timestamp(), unread: true)
         
         guard let messageData = try? Firestore.Encoder().encode(message) else { return }
         
@@ -54,5 +54,28 @@ struct ChatService{
             
             completion(messages)
         }
+    }
+    
+    func updateUnreadMessage(idMessage: String){
+        guard let currentUid = Auth.auth().currentUser?.uid else { return }
+        let chatPartnerId = chatPartner.id
+        
+        let currentUserRef = FirestoreContants.messageCollection.document(currentUid).collection(chatPartnerId).document(idMessage)
+        let chatPartnerRef = FirestoreContants.messageCollection.document(chatPartnerId).collection(currentUid).document(idMessage)
+                
+        let recentMessageRef = FirestoreContants
+            .messageCollection
+            .document(currentUid)
+            .collection("recent-messages")
+            .document(chatPartnerId)
+        
+        let updateUnread: [String: Any] = [
+            "unread": false
+        ]
+        
+        chatPartnerRef.setData(updateUnread, merge: true)
+        currentUserRef.setData(updateUnread, merge: true)
+                
+        recentMessageRef.setData(updateUnread, merge: true)
     }
 }

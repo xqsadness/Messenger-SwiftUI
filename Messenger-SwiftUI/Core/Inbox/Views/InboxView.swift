@@ -80,7 +80,7 @@ extension InboxView{
                     }
             }
             
-            Text("Charts")
+            Text("Chats")
                 .font(.semibold(size: 24))
                 .foregroundStyle(.text)
             

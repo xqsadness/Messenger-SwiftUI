@@ -32,4 +32,11 @@ class ChatViewModel: ObservableObject{
     func sendMessage(){
         servicce.sendMessage(messageText)
     }
+    
+    func updateUnreadMessage(lastMesage: Message?){
+
+        if let lastMesage{
+            servicce.updateUnreadMessage(idMessage: lastMesage.messageID ?? "")
+        }
+    }
 }

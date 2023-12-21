@@ -21,6 +21,11 @@ struct ChatView: View {
     
     let user: User
     
+    var lastMesage: Message?{
+        let currentId = UserService.shared.currentUser?.id
+        return viewModel.message.filter({ $0.toId == currentId }).last ?? nil
+    }
+    
     init(user: User){
         self.user = user
         self._viewModel = StateObject(wrappedValue: ChatViewModel(user: user))
@@ -52,6 +57,7 @@ struct ChatView: View {
         .onAppear{
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.1){
                 viewModel.scrolledID = viewModel.message.last
+                viewModel.updateUnreadMessage(lastMesage: lastMesage)
             }
         }
     }

@@ -15,6 +15,7 @@ struct Message: Identifiable, Codable, Hashable{
     let toId: String
     let messageText: String
     let timestamp: Timestamp
+    let unread: Bool
     
     var user: User?
     
