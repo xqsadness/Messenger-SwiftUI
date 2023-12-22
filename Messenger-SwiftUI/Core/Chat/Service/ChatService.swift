@@ -24,7 +24,7 @@ struct ChatService{
         
         let messageID = currentUserRef.documentID
         
-        let message = Message(messageID: messageID,fromId: currentUid, toId: chatPartnerId, messageText: messageText, timestamp: Timestamp(), unread: true)
+        let message = Message(messageID: messageID,fromId: currentUid, toId: chatPartnerId, messageText: messageText, timestamp: Timestamp(), unread: true, isRecalled: false)
         
         guard let messageData = try? Firestore.Encoder().encode(message) else { return }
         
@@ -45,7 +45,8 @@ struct ChatService{
             .order(by: "timestamp", descending: false)
         
         query.addSnapshotListener { snapShot, _ in
-            guard let changes = snapShot?.documentChanges.filter({ $0.type == .added }) else { return }
+            guard let changes = snapShot?.documentChanges else { return }
+            
             var messages = changes.compactMap({ try? $0.document.data(as: Message.self) })
             
             for (index, message) in messages.enumerated() where message.fromId != currentUid{
@@ -78,4 +79,35 @@ struct ChatService{
                 
         recentMessageRef.setData(updateUnread, merge: true)
     }
+    
+    func unsendMessage(idMessage: String){
+        guard let currentUid = Auth.auth().currentUser?.uid else { return }
+        let chatPartnerId = chatPartner.id
+        
+        let currentUserRef = FirestoreContants.messageCollection.document(currentUid).collection(chatPartnerId).document(idMessage)
+        let chatPartnerRef = FirestoreContants.messageCollection.document(chatPartnerId).collection(currentUid).document(idMessage)
+                
+        let recentMessageCurrentUserRef = FirestoreContants
+            .messageCollection
+            .document(currentUid)
+            .collection("recent-messages")
+            .document(chatPartnerId)
+        
+        let recentMessagePartnerUserRef = FirestoreContants
+            .messageCollection
+            .document(chatPartnerId)
+            .collection("recent-messages")
+            .document(currentUid)
+        
+        let updateUnread: [String: Any] = [
+            "isRecalled": true
+        ]
+        
+        chatPartnerRef.setData(updateUnread, merge: true)
+        currentUserRef.setData(updateUnread, merge: true)
+                
+        recentMessageCurrentUserRef.setData(updateUnread, merge: true)
+        recentMessagePartnerUserRef.setData(updateUnread, merge: true)
+    }
+    
 }

@@ -9,20 +9,31 @@ import SwiftUI
 
 struct ChatMessageCell: View {
     let message: Message
-    @State private var showTime = false
     
+    @StateObject var viewModel: ChatViewModel
+    @State private var showTime = false
+    @State private var showingAlertUnsend = false
+    @State private var isAppeared = false
+
     var body: some View {
         HStack{
             if message.isFromCurrentUser{
                 Spacer()
                 
-                messageText(bgr: Color(.systemBlue), fgr: .white, size: UIScreen.main.bounds.width / 1.5, alignment: .trailing)
-                
+                if message.isRecalled{
+                    unsendMessageText(text: "You unsend a message", size: UIScreen.main.bounds.width / 1.5, alignment: .trailing)
+                }else{
+                    messageText(bgr: Color(.systemBlue), fgr: .white, size: UIScreen.main.bounds.width / 1.5, alignment: .trailing)
+                }
             }else{
                 HStack(alignment: .bottom, spacing: 8){
                     CircularProfileImageView(user: message.user, size: .xxSmall)
                     
-                    messageText(bgr: Color(.systemGray5), fgr: .text, size: UIScreen.main.bounds.width / 1.75, alignment: .leading)
+                    if message.isRecalled{
+                        unsendMessageText(text: "\(message.user?.firstName ?? "unsend a message") unsend a message", size: UIScreen.main.bounds.width / 1.75, alignment: .leading)
+                    }else{
+                        messageText(bgr: Color(.systemGray5), fgr: .text, size: UIScreen.main.bounds.width / 1.75, alignment: .leading)
+                    }
                     
                     Spacer()
                 }
@@ -34,6 +45,31 @@ struct ChatMessageCell: View {
                 .opacity(phase.isIdentity ? 1 : 0)
                 .scaleEffect(phase.isIdentity ? 1 : 0.75)
                 .blur(radius: phase.isIdentity ? 0 : 10)
+        }
+        .alert(isPresented: $showingAlertUnsend) {
+            Alert(
+                title: Text("Confirm unsend message"),
+                message: Text("Once you unsend a message, you cannot undo it"),
+                primaryButton: .default(
+                    Text("Cancel"),
+                    action: {}
+                ),
+                secondaryButton: .destructive(
+                    Text("Confirm"),
+                    action: {
+                        if let id = message.messageID{
+                            viewModel.unsendMessage(idMessage: id)
+                        }
+                    }
+                )
+            )
+        }
+        .opacity(isAppeared ? 1 : 0)
+        .offset(x: isAppeared ? 0 : -50)
+        .onAppear{
+            withAnimation {
+                isAppeared = true
+            }
         }
     }
     
@@ -52,6 +88,7 @@ struct ChatMessageCell: View {
 }
 
 extension ChatMessageCell{
+    
     private var shapeBubble: some Shape{
         if message.isFromCurrentUser{
             UnevenRoundedRectangle(cornerRadii: .init(topLeading: 14, bottomLeading: 14, topTrailing: 14))
@@ -68,26 +105,44 @@ extension ChatMessageCell{
             .foregroundStyle(fgr)
             .clipShape(shapeBubble)
             .contextMenu {
-                Button{
-                    let pasteboard = UIPasteboard.general
-                    pasteboard.string = message.messageText
-                }label: {
-                    labelWithImage(symbol: "wallet.pass", text: "Coppy")
-                }
-                
-                if UserService.shared.currentUser?.id == message.fromId{
-                    Button{
-                        
-                    }label: {
-                        labelWithImage(symbol: "x.circle", text: "Unsend")
-                    }
-                }
-                
-                Text(message.timestampString)
-                    .font(.regular(size: 14))
-                    .foregroundStyle(.text)
+                contextMenu
             }
             .frame(maxWidth: size, alignment: alignment)
     }
+    
+    private var contextMenu: some View{
+        VStack{
+            Button{
+                let pasteboard = UIPasteboard.general
+                pasteboard.string = message.messageText
+            }label: {
+                labelWithImage(symbol: "wallet.pass", text: "Coppy")
+            }
+            
+            if UserService.shared.currentUser?.id == message.fromId{
+                Button{
+                    showingAlertUnsend.toggle()
+                }label: {
+                    labelWithImage(symbol: "minus.circle", text: "Unsend")
+                }
+            }
+            
+            Text("Time: " + message.timestampString)
+                .font(.regular(size: 14))
+                .foregroundStyle(.text)
+        }
+    }
+    
+    private func unsendMessageText(text: String, size: CGFloat, alignment: Alignment) -> some View{
+        Text("\(text)")
+            .font(.regular(size: 15))
+            .padding(12)
+            .foregroundStyle(.text).opacity(0.5)
+            .overlay(
+                UnevenRoundedRectangle(cornerRadii: message.isFromCurrentUser ? .init(topLeading: 14, bottomLeading: 14, topTrailing: 14) : .init(topLeading: 14, bottomTrailing: 14, topTrailing: 14))
+                    .inset(by: 0.5)
+                    .stroke(Color.text.opacity(0.3), lineWidth: 0.7)
+            )
+            .frame(maxWidth: size, alignment: alignment)
+    }
 }
-

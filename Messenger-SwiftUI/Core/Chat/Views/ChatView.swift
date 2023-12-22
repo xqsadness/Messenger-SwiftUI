@@ -30,6 +30,8 @@ struct ChatView: View {
         self._viewModel = StateObject(wrappedValue: ChatViewModel(user: user))
     }
     
+    @State private var scrollId: String = ""
+    
     var body: some View {
         VStack{
             title
@@ -41,13 +43,14 @@ struct ChatView: View {
                 //messages
                 VStack{
                     ForEach(viewModel.message){ message in
-                        ChatMessageCell(message: message)
+                        ChatMessageCell(message: message,viewModel: viewModel)
                     }
                 }
                 .scrollTargetLayout()
+                .scrollDismissesKeyboard(.never)
             }
             .scrollPosition(id: .constant(viewModel.scrolledID?.id), anchor: .bottom)
-            
+
             //message input
             Spacer()
             
@@ -56,7 +59,9 @@ struct ChatView: View {
         .onAppear{
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.1){
                 viewModel.scrolledID = viewModel.message.last
-                viewModel.updateUnreadMessage(lastMesage: lastMesage)
+                if lastMesage?.unread == true{
+                    viewModel.updateUnreadMessage(lastMesage: lastMesage)
+                }
             }
         }
     }
@@ -76,14 +81,13 @@ extension ChatView{
             Text("Back")
                 .font(.semibold(size: 14.5))
                 .foregroundStyle(.text)
-        }
-        .onTapGesture {
-            viewModel.scrolledID = nil
-            dismiss()
+                .onTapGesture {
+                    dismiss()
+                    viewModel.scrolledID = viewModel.message.last
+                }
         }
         .hAlign(.leading)
         .padding(.horizontal)
-        .contentShape(Rectangle())
         .overlay{
             Text(user.fullname)
                 .font(.semibold(size: 20))

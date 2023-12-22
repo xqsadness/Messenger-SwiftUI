@@ -55,22 +55,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "3E617C73-DB33-4688-B7F6-9242B071F519"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Messenger-SwiftUI/Core/Chat/ViewModel/ChatViewModel.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "27"
-            endingLineNumber = "27"
-            landmarkName = "obeserveMessages()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "3E52E689-25AF-4121-8294-D5715AFCE7AB"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -114,6 +98,182 @@
             endingLineNumber = "22"
             landmarkName = "body"
             landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "58CB8013-C62A-4BF6-9893-FD50E852DE98"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Messenger-SwiftUI/Core/Chat/Views/ChatMessageCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "19"
+            endingLineNumber = "19"
+            landmarkName = "body"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "58CB8013-C62A-4BF6-9893-FD50E852DE98 - 5c0d946fd9b03a76"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Messenger_SwiftUI.ChatMessageCell.body.getter : some"
+                  moduleName = "Messenger-SwiftUI"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/darktech4/Desktop/Nope/Messenger-SwiftUI/Messenger-SwiftUI/Core/Chat/Views/ChatMessageCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "824">
+               </Location>
+               <Location
+                  uuid = "58CB8013-C62A-4BF6-9893-FD50E852DE98 - 19e7a32661913c8f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; SwiftUI._ConditionalContent&lt;SwiftUI.TupleView&lt;(SwiftUI.Spacer, SwiftUI._ConditionalContent&lt;&lt;&lt;opaque return type of SwiftUI.View.frame(minWidth: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, idealWidth: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, maxWidth: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, minHeight: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, idealHeight: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, maxHeight: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, alignment: SwiftUI.Alignment) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of Messenger_SwiftUI.ChatMessageCell.messageText(bgr: SwiftUI.Color, fgr: SwiftUI.Color, size: CoreGraphics.CGFloat, alignment: SwiftUI.Alignment) -&gt; some&gt;&gt;.0&gt;)&gt;, SwiftUI.HStack&lt;SwiftUI.TupleView&lt;(Messenger_SwiftUI.CircularProfileImageView, SwiftUI._ConditionalContent&lt;&lt;&lt;opaque return type of SwiftUI.View.frame(minWidth: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, idealWidth: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, maxWidth: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, minHeight: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, idealHeight: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, maxHeight: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, alignment: SwiftUI.Alignment) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of Messenger_SwiftUI.ChatMessageCell.messageText(bgr: SwiftUI.Color, fgr: SwiftUI.Color, size: CoreGraphics.CGFloat, alignment: SwiftUI.Alignment) -&gt; some&gt;&gt;.0&gt;, SwiftUI.Spacer)&gt;&gt;&gt; in Messenger_SwiftUI.ChatMessageCell.body.getter : some"
+                  moduleName = "Messenger-SwiftUI"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/darktech4/Desktop/Nope/Messenger-SwiftUI/Messenger-SwiftUI/Core/Chat/Views/ChatMessageCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "16"
+                  endingLineNumber = "16"
+                  offsetFromSymbolStart = "1436">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A2BDABD1-AE39-44A7-9A10-AB5107C84CDA"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Messenger-SwiftUI/Core/Chat/ViewModel/ChatViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
+            landmarkName = "updateUnreadMessage(lastMesage:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "A2BDABD1-AE39-44A7-9A10-AB5107C84CDA - 58d95f6b492690bb"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Messenger_SwiftUI.ChatViewModel.updateUnreadMessage(lastMesage: Swift.Optional&lt;Messenger_SwiftUI.Message&gt;) -&gt; ()"
+                  moduleName = "Messenger-SwiftUI"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/darktech4/Desktop/Nope/Messenger-SwiftUI/Messenger-SwiftUI/Core/Chat/ViewModel/ChatViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "39"
+                  endingLineNumber = "39"
+                  offsetFromSymbolStart = "300">
+               </Location>
+               <Location
+                  uuid = "A2BDABD1-AE39-44A7-9A10-AB5107C84CDA - 58d95f6b492690bb"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Messenger_SwiftUI.ChatViewModel.updateUnreadMessage(lastMesage: Swift.Optional&lt;Messenger_SwiftUI.Message&gt;) -&gt; ()"
+                  moduleName = "Messenger-SwiftUI"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/darktech4/Desktop/Nope/Messenger-SwiftUI/Messenger-SwiftUI/Core/Chat/ViewModel/ChatViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "39"
+                  endingLineNumber = "39"
+                  offsetFromSymbolStart = "236">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C102D3D7-952F-4570-BD01-097190CA5FC4"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Messenger-SwiftUI/Core/Chat/Views/ChatView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
+            landmarkName = "body"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "C102D3D7-952F-4570-BD01-097190CA5FC4 - 2a238e248264418a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Swift.MainActor () -&gt; () in closure #2 () -&gt; () in Messenger_SwiftUI.ChatView.body.getter : some"
+                  moduleName = "Messenger-SwiftUI"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/darktech4/Desktop/Nope/Messenger-SwiftUI/Messenger-SwiftUI/Core/Chat/Views/ChatView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "63"
+                  endingLineNumber = "63"
+                  offsetFromSymbolStart = "456">
+               </Location>
+               <Location
+                  uuid = "C102D3D7-952F-4570-BD01-097190CA5FC4 - 2a238e248264418a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Swift.MainActor () -&gt; () in closure #2 () -&gt; () in Messenger_SwiftUI.ChatView.body.getter : some"
+                  moduleName = "Messenger-SwiftUI"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/darktech4/Desktop/Nope/Messenger-SwiftUI/Messenger-SwiftUI/Core/Chat/Views/ChatView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "63"
+                  endingLineNumber = "63"
+                  offsetFromSymbolStart = "704">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D33175F7-CA15-40DE-AA06-BF801DCA8C09"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Messenger-SwiftUI/Core/Chat/ViewModel/ChatViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
+            landmarkName = "obeserveMessages()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "84C38A8F-1063-4EBF-AE7B-1BAB875F750F"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Messenger-SwiftUI/Core/Chat/ViewModel/ChatViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
+            landmarkName = "obeserveMessages()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -26,22 +26,10 @@ struct InboxRowView: View {
                     .foregroundStyle(.text)
                     .font(unread ? .bold(size: 14) : .medium(size: 14))
                 
-                Text("\(message.fromId == UserService.shared.currentUser?.id ? "You: " : "")\(message.messageText)")
-                    .foregroundStyle(unread ? .text : .gray)
-                    .font(unread ? .bold(size: 14) : .regular(size: 14))
-                    .lineLimit(1)
-                    .frame(maxWidth: UIScreen.main.bounds.width - 100, alignment: .leading)
+                messageView
             }
 
-            HStack{
-                Text("\(message.timestampString)")
-                    .foregroundStyle(unread ? .text : .gray)
-                    .font(unread ? .bold(size: 14) : .regular(size: 14))
-                
-                Image(systemName: "chevron.right")
-                    .imageScale(.small)
-                    .foregroundStyle(unread ? .text : .gray)
-            }
+            timeMessage
         }
         .frame(height: 72)
         .opacity(isAppeared ? 1 : 0)
@@ -56,6 +44,37 @@ struct InboxRowView: View {
                 .opacity(phase.isIdentity ? 1 : 0)
                 .scaleEffect(phase.isIdentity ? 1 : 0.75)
                 .blur(radius: phase.isIdentity ? 0 : 10)
+        }
+    }
+}
+
+extension InboxRowView{
+    
+    private var messageView: some View{
+        if message.isRecalled{
+            Text("\(message.fromId == UserService.shared.currentUser?.id ? "You" : "\(message.user?.firstName ?? "")") unsend a message")
+                .foregroundStyle(unread ? .text : .gray)
+                .font(unread ? .bold(size: 14) : .regular(size: 14))
+                .lineLimit(1)
+                .frame(maxWidth: UIScreen.main.bounds.width - 100, alignment: .leading)
+        }else{
+            Text("\(message.fromId == UserService.shared.currentUser?.id ? "You: " : "")\(message.messageText)")
+                .foregroundStyle(unread ? .text : .gray)
+                .font(unread ? .bold(size: 14) : .regular(size: 14))
+                .lineLimit(1)
+                .frame(maxWidth: UIScreen.main.bounds.width - 100, alignment: .leading)
+        }
+    }
+    
+    private var timeMessage: some View{
+        HStack{
+            Text("\(message.timestampString)")
+                .foregroundStyle(unread ? .text : .gray)
+                .font(unread ? .bold(size: 14) : .regular(size: 14))
+            
+            Image(systemName: "chevron.right")
+                .imageScale(.small)
+                .foregroundStyle(unread ? .text : .gray)
         }
     }
 }
