@@ -28,9 +28,9 @@ Clone this repo and delete GoogleService-Info in the project for add your fireba
 <p> - Dark light mode </p>
 <p> - Delete account </p>
 <p> - Highlight unread messages </p>
+<p> - Unsend message </p>
 <p> - ... </p>
 <h2> Future  features </h2>
-<p> - Unsend message </p>
 <p> - Send picture messages </p>
 <p> - Update status </p>
 <p> - Push notification </p>
