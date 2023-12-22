@@ -35,6 +35,7 @@ Clone this repo and delete GoogleService-Info in the project for add your fireba
 <p> - Update status </p>
 <p> - Push notification </p>
 <p> - Paging messages </p>
+<p> - Displaying users currently active in real-time </p>
 <p> - ... </p>
 
 Updating ... !
