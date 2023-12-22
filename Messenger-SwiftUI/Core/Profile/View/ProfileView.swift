@@ -44,21 +44,7 @@ struct ProfileView: View {
                                         .font(.regular(size: 16))
                                 }
                                 .onTapGesture {
-                                    switch option{
-                                        
-                                    case .darkMode:
-                                        withAnimation {
-                                            isShowDarkMode.toggle()
-                                        }
-                                    case .activeStatus:
-                                        print(option)
-                                    case .accessibility:
-                                        print(option)
-                                    case .privacy:
-                                        print(option)
-                                    case .notifications:
-                                        print(option)
-                                    }
+                                    optionOntap(option: option)
                                 }
                             }
                         }
@@ -108,6 +94,24 @@ struct ProfileView: View {
                     }
                 )
             )
+        }
+    }
+    
+    func optionOntap(option: SettingOptionsViewModel){
+        switch option{
+            
+        case .darkMode:
+            withAnimation {
+                isShowDarkMode.toggle()
+            }
+        case .activeStatus:
+            print(option)
+        case .accessibility:
+            print(option)
+        case .privacy:
+            print(option)
+        case .notifications:
+            print(option)
         }
     }
 }
