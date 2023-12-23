@@ -46,15 +46,14 @@ class InboxViewModel: ObservableObject {
             
             UserService.fetchUser(withUid: message.chatPartnerID) {  user in
                 messages[i].user = user
-                
+                //MARK: - err
                 if let existingIndex = self.recentMessage.firstIndex(where: { $0.messageID == message.chatPartnerID }) {
                     // Message with the same ID already exists, update it
-                    self.recentMessage[existingIndex] = messages[i]
+                        self.recentMessage[existingIndex] = messages[i]
                 } else {
                     // Message doesn't exist, append it
                     self.recentMessage.append(messages[i])
                 }
-                
             }
         }
     }

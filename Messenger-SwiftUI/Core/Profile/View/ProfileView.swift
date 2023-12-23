@@ -180,7 +180,6 @@ extension ProfileView{
                                     .imageScale(.medium)
                                     .foregroundStyle(.white)
                             }
-                            
                         }
                     }
                 }

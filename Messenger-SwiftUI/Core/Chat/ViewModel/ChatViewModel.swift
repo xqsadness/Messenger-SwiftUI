@@ -53,6 +53,6 @@ class ChatViewModel: ObservableObject{
     }
     
     func unsendMessage(idMessage: String){
-        service.unsendMessage(idMessage: idMessage)
+        service.unsendMessage(idMessage: idMessage, isLastMessage: self.message.last?.messageID == idMessage)
     }
 }

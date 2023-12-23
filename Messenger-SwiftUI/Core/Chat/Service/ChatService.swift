@@ -80,7 +80,7 @@ struct ChatService{
         recentMessageRef.setData(updateUnread, merge: true)
     }
     
-    func unsendMessage(idMessage: String){
+    func unsendMessage(idMessage: String,isLastMessage: Bool){
         guard let currentUid = Auth.auth().currentUser?.uid else { return }
         let chatPartnerId = chatPartner.id
         
@@ -105,9 +105,11 @@ struct ChatService{
         
         chatPartnerRef.setData(updateUnread, merge: true)
         currentUserRef.setData(updateUnread, merge: true)
-                
-        recentMessageCurrentUserRef.setData(updateUnread, merge: true)
-        recentMessagePartnerUserRef.setData(updateUnread, merge: true)
+               
+        if isLastMessage{
+            recentMessageCurrentUserRef.setData(updateUnread, merge: true)
+            recentMessagePartnerUserRef.setData(updateUnread, merge: true)
+        }
     }
     
 }
