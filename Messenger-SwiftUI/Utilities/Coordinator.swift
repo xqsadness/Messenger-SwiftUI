@@ -3,7 +3,7 @@ import Foundation
 import SwiftUI
 
 enum Page: String, Identifiable{
-    case NONE, loginView, registrationView
+    case NONE, loginView, registrationView, forgotPasswordView
     
     var id: String{
         return self.rawValue
@@ -72,6 +72,11 @@ class Coordinator: ObservableObject{
             
         case .registrationView:
             RegistrationView()
+                .navigationBarBackButtonHidden()
+                .environmentObject(Coordinator.shared)
+            
+        case .forgotPasswordView:
+            ForgotPasswordView()
                 .navigationBarBackButtonHidden()
                 .environmentObject(Coordinator.shared)
         default:

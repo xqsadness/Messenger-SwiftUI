@@ -82,7 +82,7 @@ extension LoginView{
     
     private var forgotPassword: some View{
         Button{
-            
+            coordinator.push(.forgotPasswordView)
         }label: {
             Text("Forgot password?")
                 .font(.bold(size: 13))
@@ -98,7 +98,7 @@ extension LoginView{
         }label: {
             Text("Login")
                 .font(.semibold(size: 14))
-                .foregroundStyle(.text2)
+                .foregroundStyle(.white)
                 .frame(width: 360, height: 44)
                 .background(Color(.systemBlue))
                 .cornerRadius(10)

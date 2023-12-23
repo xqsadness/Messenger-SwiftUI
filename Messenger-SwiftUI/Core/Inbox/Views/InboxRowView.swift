@@ -51,18 +51,20 @@ struct InboxRowView: View {
 extension InboxRowView{
     
     private var messageView: some View{
-        if message.isRecalled{
-            Text("\(message.fromId == UserService.shared.currentUser?.id ? "You" : "\(message.user?.firstName ?? "")") unsend a message")
-                .foregroundStyle(unread ? .text : .gray)
-                .font(unread ? .bold(size: 14) : .regular(size: 14))
-                .lineLimit(1)
-                .frame(maxWidth: UIScreen.main.bounds.width - 100, alignment: .leading)
-        }else{
-            Text("\(message.fromId == UserService.shared.currentUser?.id ? "You: " : "")\(message.messageText)")
-                .foregroundStyle(unread ? .text : .gray)
-                .font(unread ? .bold(size: 14) : .regular(size: 14))
-                .lineLimit(1)
-                .frame(maxWidth: UIScreen.main.bounds.width - 100, alignment: .leading)
+        VStack{
+            if message.isRecalled{
+                Text("\(message.fromId == UserService.shared.currentUser?.id ? "You" : "\(message.user?.firstName ?? "")") unsend a message")
+                    .foregroundStyle(unread ? .text : .gray)
+                    .font(unread ? .bold(size: 14) : .regular(size: 14))
+                    .lineLimit(1)
+                    .frame(maxWidth: UIScreen.main.bounds.width - 100, alignment: .leading)
+            }else{
+                Text("\(message.fromId == UserService.shared.currentUser?.id ? "You: " : "")\(message.messageText)")
+                    .foregroundStyle(unread ? .text : .gray)
+                    .font(unread ? .bold(size: 14) : .regular(size: 14))
+                    .lineLimit(1)
+                    .frame(maxWidth: UIScreen.main.bounds.width - 100, alignment: .leading)
+            }
         }
     }
     

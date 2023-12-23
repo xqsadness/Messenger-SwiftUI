@@ -391,7 +391,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "08F6733B-5B5A-458B-8DA2-68C22ED12E35"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Messenger-SwiftUI/Core/Inbox/Service/InboxService.swift"

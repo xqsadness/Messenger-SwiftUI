@@ -82,6 +82,8 @@
 		DDE0F4702B2AEEDD0089F94C /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE0F46F2B2AEEDD0089F94C /* NotificationView.swift */; };
 		DDE0F4722B2AEFD20089F94C /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE0F4712B2AEFD20089F94C /* RootView.swift */; };
 		DDE0F4762B2AF9E50089F94C /* InboxViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE0F4752B2AF9E50089F94C /* InboxViewModel.swift */; };
+		DDF1A0392B3687B600146A60 /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF1A0382B3687B600146A60 /* ForgotPasswordView.swift */; };
+		DDF1A03B2B368A3E00146A60 /* ForgotPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF1A03A2B368A3E00146A60 /* ForgotPasswordViewModel.swift */; };
 		DDFBC9052B2D34BB00A050E9 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDFBC9042B2D34BB00A050E9 /* Date.swift */; };
 		DDFBC9092B2D389A00A050E9 /* ActiveNowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDFBC9082B2D389A00A050E9 /* ActiveNowViewModel.swift */; };
 		DDFBC90C2B2D3B5900A050E9 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDFBC90B2B2D3B5900A050E9 /* Route.swift */; };
@@ -138,6 +140,8 @@
 		DDE0F46F2B2AEEDD0089F94C /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
 		DDE0F4712B2AEFD20089F94C /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		DDE0F4752B2AF9E50089F94C /* InboxViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InboxViewModel.swift; sourceTree = "<group>"; };
+		DDF1A0382B3687B600146A60 /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
+		DDF1A03A2B368A3E00146A60 /* ForgotPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewModel.swift; sourceTree = "<group>"; };
 		DDFBC9042B2D34BB00A050E9 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		DDFBC9082B2D389A00A050E9 /* ActiveNowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveNowViewModel.swift; sourceTree = "<group>"; };
 		DDFBC90B2B2D3B5900A050E9 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
@@ -352,6 +356,7 @@
 			children = (
 				DDC728932B29A94B00B068E6 /* LoginViewModel.swift */,
 				DDC728952B29A98C00B068E6 /* RegistrationViewModel.swift */,
+				DDF1A03A2B368A3E00146A60 /* ForgotPasswordViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -485,6 +490,7 @@
 			children = (
 				DDD1E24E2B2815370047F456 /* LoginView.swift */,
 				DD09E8D92B28472F00235491 /* RegistrationView.swift */,
+				DDF1A0382B3687B600146A60 /* ForgotPasswordView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -651,6 +657,7 @@
 				DDE0F4722B2AEFD20089F94C /* RootView.swift in Sources */,
 				DDC7283D2B2963E600B068E6 /* CircularProfileImageView.swift in Sources */,
 				DDC728362B29538300B068E6 /* SettingOptionsViewModel.swift in Sources */,
+				DDF1A0392B3687B600146A60 /* ForgotPasswordView.swift in Sources */,
 				DDD1E2382B28141A0047F456 /* ContentView.swift in Sources */,
 				DDC6DABF2B2C40A6007828ED /* Constant.swift in Sources */,
 				DDBBF5882B2A9115002F0C94 /* ContentViewModel.swift in Sources */,
@@ -668,6 +675,7 @@
 				DD09E8D72B283EFC00235491 /* Views.swift in Sources */,
 				DDD1E2362B28141A0047F456 /* Messenger_SwiftUIApp.swift in Sources */,
 				DDC6DABD2B2C3F6B007828ED /* ChatService.swift in Sources */,
+				DDF1A03B2B368A3E00146A60 /* ForgotPasswordViewModel.swift in Sources */,
 				DDC728272B293CA800B068E6 /* InboxView.swift in Sources */,
 				DD09E8C32B28396400235491 /* Appcontroller.swift in Sources */,
 				DDC7282A2B293EF200B068E6 /* ActiveNowView.swift in Sources */,

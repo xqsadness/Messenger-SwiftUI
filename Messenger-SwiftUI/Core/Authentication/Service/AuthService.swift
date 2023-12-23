@@ -14,7 +14,7 @@ class AuthService {
     @Published var userSession: FirebaseAuth.User?
     
     static var shared = AuthService()
-        
+    
     init(){
         self.userSession = Auth.auth().currentUser
         loadCurrentUserData()
@@ -42,6 +42,17 @@ class AuthService {
         } catch {
             LocalNotification.shared.message("\(error.localizedDescription)", .warning)
             debugPrint("ERROR: Failed to create user with error: \(error.localizedDescription)")
+        }
+    }
+    
+    
+    func resetPassword(email: String) async throws{
+        do{
+            try await Auth.auth().sendPasswordReset(withEmail: email)
+            LocalNotification.shared.message("We've sent you a link to reset your password, please check your email", .success)
+        }catch{
+            LocalNotification.shared.message("\(error.localizedDescription)", .warning)
+            print("Failed to reset password: \(error.localizedDescription)")
         }
     }
     
