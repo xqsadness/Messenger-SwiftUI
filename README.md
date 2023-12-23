@@ -29,6 +29,7 @@ Clone this repo and delete GoogleService-Info in the project for add your fireba
 <p> - Delete account </p>
 <p> - Highlight unread messages </p>
 <p> - Unsend message </p>
+<p> - Forgot password </p>
 <p> - ... </p>
 <h2> Future  features </h2>
 <p> - Send picture messages </p>
