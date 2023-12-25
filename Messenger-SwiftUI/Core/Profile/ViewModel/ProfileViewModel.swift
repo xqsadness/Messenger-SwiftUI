@@ -12,14 +12,14 @@ import Firebase
 
 @Observable
 class ProfileViewModel{
-    
     var selectedItem: PhotosPickerItem? {
         didSet { Task { try await loadImage() } }
     }
     
     var profileImage: UIImage?
     var isLoading = false
-    
+    var nameChange = ""
+
     func loadImage() async throws{
         guard let item = selectedItem else { return }
         
@@ -73,4 +73,22 @@ class ProfileViewModel{
         try await userRef.setData(dataToUpdate, merge: true)
     }
     
+    func changeNameUser() async throws {
+        let userID = Auth.auth().currentUser?.uid
+        
+        if let userID{
+            if nameChange.isEmpty{
+                LocalNotification.shared.message("Please enter new name", .warning)
+            }else{
+                let userRef = FirestoreContants.userCollection.document(userID)
+                let dataToUpdate: [String: Any] = [
+                    "fullname": nameChange
+                ]
+                try await userRef.setData(dataToUpdate, merge: true)
+                try await UserService.shared.fetchCurrentUser()
+                
+                self.nameChange = ""
+            }
+        }
+    }
 }

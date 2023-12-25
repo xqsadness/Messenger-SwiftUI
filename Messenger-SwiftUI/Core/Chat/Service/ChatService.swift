@@ -33,6 +33,11 @@ struct ChatService{
         
         recentCurrentUserRef.setData(messageData)
         recentPartnerUserRef.setData(messageData)
+        
+        //Send notification
+        if let fcmToken = chatPartner.fcmToken{
+            PushNotificationSender.shared.sendPushNotificationProduct(to: fcmToken, title: "You have a new message", body: messageText)
+        }
     }
     
     func observeMessages(completion: @escaping ([Message]) -> Void ){

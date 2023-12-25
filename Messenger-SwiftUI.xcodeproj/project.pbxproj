@@ -40,7 +40,6 @@
 		DDC7283D2B2963E600B068E6 /* CircularProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC7283C2B2963E600B068E6 /* CircularProfileImageView.swift */; };
 		DDC728402B298C9200B068E6 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC7283F2B298C9200B068E6 /* ChatView.swift */; };
 		DDC728422B29906100B068E6 /* ChatMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC728412B29906100B068E6 /* ChatMessageCell.swift */; };
-		DDC728592B29A55300B068E6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DDC728582B29A55300B068E6 /* GoogleService-Info.plist */; };
 		DDC7285C2B29A60400B068E6 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = DDC7285B2B29A60400B068E6 /* FirebaseAnalytics */; };
 		DDC7285E2B29A60400B068E6 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = DDC7285D2B29A60400B068E6 /* FirebaseAnalyticsOnDeviceConversion */; };
 		DDC728602B29A60400B068E6 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = DDC7285F2B29A60400B068E6 /* FirebaseAnalyticsSwift */; };
@@ -82,6 +81,8 @@
 		DDE0F4702B2AEEDD0089F94C /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE0F46F2B2AEEDD0089F94C /* NotificationView.swift */; };
 		DDE0F4722B2AEFD20089F94C /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE0F4712B2AEFD20089F94C /* RootView.swift */; };
 		DDE0F4762B2AF9E50089F94C /* InboxViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE0F4752B2AF9E50089F94C /* InboxViewModel.swift */; };
+		DDE9AA442B395FB200713B39 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DDE9AA432B395FB100713B39 /* GoogleService-Info.plist */; };
+		DDE9AA472B3966CE00713B39 /* PushNotificationSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE9AA462B3966CE00713B39 /* PushNotificationSender.swift */; };
 		DDF1A0392B3687B600146A60 /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF1A0382B3687B600146A60 /* ForgotPasswordView.swift */; };
 		DDF1A03B2B368A3E00146A60 /* ForgotPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF1A03A2B368A3E00146A60 /* ForgotPasswordViewModel.swift */; };
 		DDFBC9052B2D34BB00A050E9 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDFBC9042B2D34BB00A050E9 /* Date.swift */; };
@@ -124,7 +125,6 @@
 		DDC7283C2B2963E600B068E6 /* CircularProfileImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProfileImageView.swift; sourceTree = "<group>"; };
 		DDC7283F2B298C9200B068E6 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 		DDC728412B29906100B068E6 /* ChatMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessageCell.swift; sourceTree = "<group>"; };
-		DDC728582B29A55300B068E6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DDC728932B29A94B00B068E6 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		DDC728952B29A98C00B068E6 /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
 		DDC728972B29A9B700B068E6 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
@@ -140,6 +140,9 @@
 		DDE0F46F2B2AEEDD0089F94C /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
 		DDE0F4712B2AEFD20089F94C /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		DDE0F4752B2AF9E50089F94C /* InboxViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InboxViewModel.swift; sourceTree = "<group>"; };
+		DDE9AA432B395FB100713B39 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		DDE9AA452B3960B700713B39 /* Messenger-SwiftUI.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Messenger-SwiftUI.entitlements"; sourceTree = "<group>"; };
+		DDE9AA462B3966CE00713B39 /* PushNotificationSender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationSender.swift; sourceTree = "<group>"; };
 		DDF1A0382B3687B600146A60 /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
 		DDF1A03A2B368A3E00146A60 /* ForgotPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewModel.swift; sourceTree = "<group>"; };
 		DDFBC9042B2D34BB00A050E9 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
@@ -194,6 +197,7 @@
 				DD09E8C22B28396400235491 /* Coordinator.swift */,
 				DDE0F46D2B2AEE980089F94C /* LocalNotification.swift */,
 				DDC6DABE2B2C40A6007828ED /* Constant.swift */,
+				DDE9AA462B3966CE00713B39 /* PushNotificationSender.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -388,6 +392,7 @@
 		DDD1E2342B28141A0047F456 /* Messenger-SwiftUI */ = {
 			isa = PBXGroup;
 			children = (
+				DDE9AA452B3960B700713B39 /* Messenger-SwiftUI.entitlements */,
 				DD09E8D82B283FC500235491 /* Info.plist */,
 				DDD1E2452B2814980047F456 /* App */,
 				DDD1E2462B28149A0047F456 /* Extensions */,
@@ -396,7 +401,7 @@
 				DDFBC90A2B2D3B3D00A050E9 /* Routing */,
 				DDD1E2492B2814A00047F456 /* Service */,
 				DD09E8C02B28396400235491 /* Utilities */,
-				DDC728582B29A55300B068E6 /* GoogleService-Info.plist */,
+				DDE9AA432B395FB100713B39 /* GoogleService-Info.plist */,
 				DDAE12A82B35858E00E03530 /* Launch Screen.storyboard */,
 				DDD1E23B2B28141B0047F456 /* Assets.xcassets */,
 				DDD1E23D2B28141B0047F456 /* Preview Content */,
@@ -636,7 +641,7 @@
 				DD09E8D42B283EFC00235491 /* Inter-Regular.ttf in Resources */,
 				DD09E8D12B283EFC00235491 /* Inter-Medium.ttf in Resources */,
 				DD09E8D52B283EFC00235491 /* Inter-SemiBold.ttf in Resources */,
-				DDC728592B29A55300B068E6 /* GoogleService-Info.plist in Resources */,
+				DDE9AA442B395FB200713B39 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -689,6 +694,7 @@
 				DDC728382B29599C00B068E6 /* ProfileViewModel.swift in Sources */,
 				DDE0F4762B2AF9E50089F94C /* InboxViewModel.swift in Sources */,
 				DDFBC9052B2D34BB00A050E9 /* Date.swift in Sources */,
+				DDE9AA472B3966CE00713B39 /* PushNotificationSender.swift in Sources */,
 				DD09E8D02B283EFC00235491 /* Color.swift in Sources */,
 				DDC728942B29A94B00B068E6 /* LoginViewModel.swift in Sources */,
 			);
@@ -821,6 +827,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Messenger-SwiftUI/Messenger-SwiftUI.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Messenger-SwiftUI/Preview Content\"";
@@ -853,6 +860,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Messenger-SwiftUI/Messenger-SwiftUI.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Messenger-SwiftUI/Preview Content\"";

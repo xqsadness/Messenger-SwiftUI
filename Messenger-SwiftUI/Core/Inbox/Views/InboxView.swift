@@ -75,9 +75,6 @@ extension InboxView{
             }else{
                 ProgressView()
                     .frame(width: 40, height: 40)
-                    .onTapGesture {
-                        AuthService.shared.signOut()
-                    }
             }
             
             Text("Chats")

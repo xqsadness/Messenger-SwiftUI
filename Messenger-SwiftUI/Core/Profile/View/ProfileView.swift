@@ -9,11 +9,18 @@ import SwiftUI
 import PhotosUI
 
 struct ProfileView: View {
+    enum FocusedField {
+        case newName
+    }
+    
     @EnvironmentObject var coordinator: Coordinator
     @Bindable var viewModel = ProfileViewModel()
+    @FocusState private var focusedField: FocusedField?
     
     @State var isShowDarkMode = false
     @State private var showingAlertDeleteAccount = false
+    @State private var showingLogout = false
+    @State private var showingChangeName = false
     
     private var user: User? {
         return UserService.shared.currentUser ?? nil
@@ -23,7 +30,7 @@ struct ProfileView: View {
         VStack{
             if isShowDarkMode{
                 ChangeDarkLightView(isShowDarkMode: $isShowDarkMode)
-                .transition(.move(edge: .trailing))
+                    .transition(.move(edge: .trailing))
             }else{
                 VStack{
                     //header
@@ -50,22 +57,9 @@ struct ProfileView: View {
                         }
                         
                         Section{
-                            Button{
-                                AuthService.shared.signOut()
-                                coordinator.pop()
-                            }label: {
-                                Text("Log out")
-                                    .font(.regular(size: 16))
-                                    .foregroundStyle(.red)
-                            }
+                            logout
                             
-                            Button{
-                                showingAlertDeleteAccount.toggle()
-                            }label: {
-                                Text("Delete account")
-                                    .font(.regular(size: 16))
-                                    .foregroundStyle(.red)
-                            }
+                            deleteAccount
                         }
                     }
                 }
@@ -76,30 +70,10 @@ struct ProfileView: View {
                 }
             }
         }
-        .alert(isPresented: $showingAlertDeleteAccount) {
-            Alert(
-                title: Text("Confirm account deletion"),
-                message: Text("Once your account is deleted, you will not be able to restore it. Are you sure you want to delete it?"),
-                primaryButton: .default(
-                    Text("Cancel"),
-                    action: {}
-                ),
-                secondaryButton: .destructive(
-                    Text("Delete"),
-                    action: {
-                        Task{
-                            try await AuthService.shared.deleteUserData()
-                            coordinator.pop()
-                        }
-                    }
-                )
-            )
-        }
     }
     
     func optionOntap(option: SettingOptionsViewModel){
         switch option{
-            
         case .darkMode:
             withAnimation {
                 isShowDarkMode.toggle()
@@ -111,7 +85,9 @@ struct ProfileView: View {
         case .privacy:
             print(option)
         case .notifications:
-            print(option)
+            let token = "eHbP2wauyUmgk8A_1V0Enu:APA91bExjvfQ2qDcrh1MXsB8W1NFXvBWQckj5ylFVk4AMQaRvi6BokdP7CJna2P_J4vYWZOX-nBOOl_0CjDqFJ-j9h4GTBoq0vxqzndH8-jFnPp1l2901u6d2Zkd0KFl9R__7EM1vuyR"
+            
+            PushNotificationSender.shared.sendPushNotificationProduct(to: token, title: "Push  Notification", body: "Test notification")
         }
     }
 }
@@ -151,43 +127,147 @@ extension ProfileView{
                 coordinator.pop()
             }
             
-            VStack{
-                PhotosPicker(selection: $viewModel.selectedItem){
-                    VStack{
-                        if let profileImage = viewModel.profileImage{
-                            Image(uiImage: profileImage)
-                                .resizable()
-                                .scaledToFill()
-                                .frame(width: 100, height: 100)
-                                .clipShape(Circle())
-                        }else{
-                            CircularProfileImageView(user: user, size: .xxLarge)
-                        }
+            avatar
+        }
+    }
+    
+    private var avatar: some View{
+        VStack{
+            PhotosPicker(selection: $viewModel.selectedItem){
+                VStack{
+                    if let profileImage = viewModel.profileImage{
+                        Image(uiImage: profileImage)
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: 100, height: 100)
+                            .clipShape(Circle())
+                    }else{
+                        CircularProfileImageView(user: user, size: .xxLarge)
                     }
-                    .overlay {
-                        ZStack(alignment: .bottomTrailing){
-                            Color.black.opacity(0.1)
-                                .clipShape(Circle())
-                            
-                            VStack{
-                                Rectangle()
-                                    .foregroundStyle(.black)
-                                    .cornerRadius(3)
-                            }
-                            .frame(width: 25, height: 20)
-                            .overlay {
-                                Image(systemName: "camera.fill")
-                                    .imageScale(.medium)
-                                    .foregroundStyle(.white)
-                            }
+                }
+                .overlay {
+                    ZStack(alignment: .bottomTrailing){
+                        Color.black.opacity(0.1)
+                            .clipShape(Circle())
+                        
+                        VStack{
+                            Rectangle()
+                                .foregroundStyle(.black)
+                                .cornerRadius(3)
+                        }
+                        .frame(width: 25, height: 20)
+                        .overlay {
+                            Image(systemName: "camera.fill")
+                                .imageScale(.medium)
+                                .foregroundStyle(.white)
                         }
                     }
                 }
-                
+            }
+            
+            name
+        }
+    }
+    
+    private var name: some View{
+        HStack(spacing: 10){
+            if showingChangeName{
+                HStack{
+                    TextField("Name", text: $viewModel.nameChange)
+                        .keyboardType(.default)
+                        .textContentType(.name)
+                        .foregroundStyle(.text)
+                        .focused($focusedField, equals: .newName)
+                    
+                    Button{
+                        Task{
+                            try await viewModel.changeNameUser()
+                            
+                            withAnimation {
+                                focusedField = nil
+                                showingChangeName.toggle()
+                            }
+                        }
+                    }label: {
+                        Text("OK")
+                            .font(.semibold(size: 14))
+                            .foregroundStyle(.text)
+                    }
+                }
+                .frame(width: 200, alignment: .center)
+            }else{
                 Text("\(user?.fullname ?? "")")
                     .font(.semibold(size: 20))
                     .foregroundStyle(.text)
+                
+                Image(systemName: "pencil.and.outline")
+                    .imageScale(.medium)
+                    .foregroundStyle(.text)
+                    .onTapGesture {
+                        withAnimation {
+                            showingChangeName.toggle()
+                            focusedField = .newName
+                        }
+                    }
             }
+        }
+        .padding(.top,5)
+    }
+    
+    
+    private var logout: some View{
+        Button{
+            showingLogout.toggle()
+        }label: {
+            Text("Log out")
+                .font(.regular(size: 16))
+                .foregroundStyle(.red)
+        }
+        .alert(isPresented: $showingLogout) {
+            Alert(
+                title: Text("Confirm logout"),
+                message: Text("Are you sure want to sign out?"),
+                primaryButton: .default(
+                    Text("Cancel"),
+                    action: {}
+                ),
+                secondaryButton: .destructive(
+                    Text("Logout"),
+                    action: {
+                        AuthService.shared.signOut()
+                        coordinator.pop()
+                    }
+                )
+            )
+        }
+    }
+    
+    private var deleteAccount: some View{
+        Button{
+            showingAlertDeleteAccount.toggle()
+        }label: {
+            Text("Delete account")
+                .font(.regular(size: 16))
+                .foregroundStyle(.red)
+        }
+        .alert(isPresented: $showingAlertDeleteAccount) {
+            Alert(
+                title: Text("Confirm account deletion"),
+                message: Text("Once your account is deleted, you will not be able to restore it. Are you sure you want to delete it?"),
+                primaryButton: .default(
+                    Text("Cancel"),
+                    action: {}
+                ),
+                secondaryButton: .destructive(
+                    Text("Delete"),
+                    action: {
+                        Task{
+                            try await AuthService.shared.deleteUserData()
+                            coordinator.pop()
+                        }
+                    }
+                )
+            )
         }
     }
 }

@@ -12,6 +12,7 @@ struct User: Codable, Identifiable, Hashable{
     @DocumentID var uid: String?
     let fullname: String
     let email: String
+    let fcmToken: String?
     let profileImageUrl: String?
     
     var id: String {
@@ -26,5 +27,5 @@ struct User: Codable, Identifiable, Hashable{
 }
 
 extension User{
-    static var MOCK_USER = User(fullname: "Nga", email: "expensive@gmail.com", profileImageUrl: "ps-4")
+    static var MOCK_USER = User(fullname: "Nga", email: "expensive@gmail.com", fcmToken: "", profileImageUrl: "ps-4")
 }

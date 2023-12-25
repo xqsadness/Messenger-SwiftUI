@@ -14,11 +14,13 @@ struct ChatMessageCell: View {
     @State private var showTime = false
     @State private var showingAlertUnsend = false
     @State private var isAppeared = false
-
+    @State private var isShowTime = false
+    
     var body: some View {
         HStack{
             if message.isFromCurrentUser{
                 Spacer()
+//                timeMessage(size: UIScreen.main.bounds.width / 1.5, alignment: .trailing)
                 
                 if message.isRecalled{
                     unsendMessageText(text: "You unsend a message", size: UIScreen.main.bounds.width / 1.5, alignment: .trailing)
@@ -26,6 +28,8 @@ struct ChatMessageCell: View {
                     messageText(bgr: Color(.systemBlue), fgr: .white, size: UIScreen.main.bounds.width / 1.5, alignment: .trailing)
                 }
             }else{
+//                timeMessage(size: .infinity, alignment: .leading)
+                
                 HStack(alignment: .bottom, spacing: 8){
                     CircularProfileImageView(user: message.user, size: .xxSmall)
                     
@@ -108,6 +112,11 @@ extension ChatMessageCell{
                 contextMenu
             }
             .frame(maxWidth: size, alignment: alignment)
+            .onTapGesture {
+                withAnimation {
+                    isShowTime.toggle()
+                }
+            }
     }
     
     private var contextMenu: some View{
@@ -144,5 +153,17 @@ extension ChatMessageCell{
                     .stroke(Color.text.opacity(0.3), lineWidth: 0.7)
             )
             .frame(maxWidth: size, alignment: alignment)
+    }
+    
+    private func timeMessage(size: CGFloat, alignment: Alignment) -> some View{
+        VStack{
+            if isShowTime{
+                Text(message.timestampString)
+                    .font(.regular(size: 13))
+                    .foregroundStyle(.text)
+                    .frame(maxWidth: size, alignment: alignment)
+                    .padding(.vertical,5)
+            }
+        }
     }
 }
