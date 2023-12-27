@@ -32,17 +32,7 @@ struct InstagramApp: App {
     var body: some Scene {
         WindowGroup {
             RootView()
-                .preferredColorScheme(getColorScheme())
-        }
-    }
-    
-    func getColorScheme() -> ColorScheme?{
-        if colorScheme == "dark"{
-            return .dark
-        }else if colorScheme == "light"{
-            return .light
-        }else{
-            return nil
+                .preferredColorScheme(.getColorScheme(colorScheme))
         }
     }
 }

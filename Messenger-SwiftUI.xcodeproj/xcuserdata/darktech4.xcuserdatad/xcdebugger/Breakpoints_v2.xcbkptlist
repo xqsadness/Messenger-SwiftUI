@@ -238,72 +238,9 @@
             filePath = "Messenger-SwiftUI/App/Messenger_SwiftUIApp.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "93"
-            endingLineNumber = "93"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
             landmarkName = "configPushNotification(application:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "784A2F81-58F5-459C-8873-1E802DC60314 - 1912f5971937eca1"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #2 (Swift.Optional&lt;Swift.String&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Messenger_SwiftUI.AppDelegate.configPushNotification(application: __C.UIApplication) -&gt; ()"
-                  moduleName = "Messenger-SwiftUI"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/darktech4/Desktop/Nope/Messenger-SwiftUI/Messenger-SwiftUI/App/Messenger_SwiftUIApp.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "93"
-                  endingLineNumber = "93"
-                  offsetFromSymbolStart = "140">
-               </Location>
-               <Location
-                  uuid = "784A2F81-58F5-459C-8873-1E802DC60314 - 1912f5971937eca1"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #2 (Swift.Optional&lt;Swift.String&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Messenger_SwiftUI.AppDelegate.configPushNotification(application: __C.UIApplication) -&gt; ()"
-                  moduleName = "Messenger-SwiftUI"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/darktech4/Desktop/Nope/Messenger-SwiftUI/Messenger-SwiftUI/App/Messenger_SwiftUIApp.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "93"
-                  endingLineNumber = "93"
-                  offsetFromSymbolStart = "532">
-               </Location>
-               <Location
-                  uuid = "784A2F81-58F5-459C-8873-1E802DC60314 - 1912f5971937eca1"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #2 (Swift.Optional&lt;Swift.String&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Messenger_SwiftUI.AppDelegate.configPushNotification(application: __C.UIApplication) -&gt; ()"
-                  moduleName = "Messenger-SwiftUI"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/darktech4/Desktop/Nope/Messenger-SwiftUI/Messenger-SwiftUI/App/Messenger_SwiftUIApp.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "93"
-                  endingLineNumber = "93"
-                  offsetFromSymbolStart = "640">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "21428150-C809-404E-9422-1A3E392B1F76"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Messenger-SwiftUI/App/Messenger_SwiftUIApp.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "59"
-            endingLineNumber = "59"
-            landmarkName = "messaging(_:didReceiveRegistrationToken:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

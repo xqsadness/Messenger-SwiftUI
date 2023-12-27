@@ -191,3 +191,15 @@ extension UIColor{
         }
     }
 }
+
+extension ColorScheme {
+    static func getColorScheme(_ colorScheme: String) -> ColorScheme? {
+        if colorScheme == "dark" {
+            return .dark
+        } else if colorScheme == "light" {
+            return .light
+        } else {
+            return nil
+        }
+    }
+}
