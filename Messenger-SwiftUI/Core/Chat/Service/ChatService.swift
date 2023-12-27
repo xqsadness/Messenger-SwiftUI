@@ -40,26 +40,33 @@ struct ChatService{
         }
     }
     
-    func observeMessages(completion: @escaping ([Message]) -> Void ){
+    func observeMessages(limit: Int, startAfter: Timestamp?, completion: @escaping ([Message], Bool) -> Void) {
         guard let currentUid = Auth.auth().currentUser?.uid else { return }
         let chatPartnerId = chatPartner.id
         
-        let query = FirestoreContants.messageCollection
-            .document(currentUid)
-            .collection(chatPartnerId)
-            .order(by: "timestamp", descending: false)
-        
-        query.addSnapshotListener { snapShot, _ in
-            guard let changes = snapShot?.documentChanges else { return }
-            
-            var messages = changes.compactMap({ try? $0.document.data(as: Message.self) })
-            
-            for (index, message) in messages.enumerated() where message.fromId != currentUid{
-                messages[index].user = chatPartner
+        var query = FirestoreContants.messageCollection
+                .document(currentUid)
+                .collection(chatPartnerId)
+                .order(by: "timestamp", descending: true)
+                .limit(to: limit)
+
+            if let startAfter = startAfter {
+                query = query.start(after: [startAfter])
             }
-            
-            completion(messages)
-        }
+
+            query.addSnapshotListener { snapShot, _ in
+                // Filter document changes to include only added or modified changes
+                guard let changes = snapShot?.documentChanges.filter({ $0.type == .added || $0.type == .modified }) else { return }
+
+                var messages = changes.compactMap({ try? $0.document.data(as: Message.self) })
+
+                for (index, message) in messages.enumerated() where message.fromId != currentUid {
+                    // Attach the user information to each message
+                    messages[index].user = chatPartner
+                }
+                // Notify if a new message is sent (isSend is true) based on the number of changes
+                completion(messages, changes.count == 1 ? true : false)
+            }
     }
     
     func updateUnreadMessage(idMessage: String){

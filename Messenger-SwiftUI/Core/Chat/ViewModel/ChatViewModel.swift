@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import Firebase
 
 class ChatViewModel: ObservableObject{
     @Published var messageText = ""
@@ -14,6 +15,8 @@ class ChatViewModel: ObservableObject{
     @Published var scrolledID: Message?
     
     let service: ChatService
+    private var startAfter: Timestamp? = nil
+    private var limit = 30
     
     init(user: User) {
         self.service = ChatService(chatPartner: user)
@@ -21,7 +24,7 @@ class ChatViewModel: ObservableObject{
     }
     
     func obeserveMessages(){
-        service.observeMessages() { messages in
+        service.observeMessages(limit: limit, startAfter: startAfter) { messages, isSend in
             for newMessage in messages {
                 // Check if the new message already exists in the current message list
                 if let index = self.message.firstIndex(where: { $0.messageID == newMessage.messageID }) {
@@ -29,14 +32,31 @@ class ChatViewModel: ObservableObject{
                     self.message[index] = newMessage
                 } else {
                     // If the message is new, append it to the current message list
-                    self.message.append(contentsOf: messages)
-                    
-                    //Scroll to the last message after a short delay for UI update
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.2){
-                        self.scrolledID = self.message.last
+                    if isSend {
+                        // If sending a message, insert the message at the beginning of the list
+                        self.message.insert(contentsOf: messages, at: 0)
+                        
+                        self.scrollToMessage(isFirst: true)
+                    } else {
+                        // If not sending a message, append the message to the end of the list
+                        self.message.append(contentsOf: messages)
+                        
+                        self.scrollToMessage(isFirst: false)
                     }
                 }
             }
+        }
+    }
+    
+    func loadMoreMessages() {
+        startAfter = message.last?.timestamp
+        obeserveMessages()
+    }
+    
+    func scrollToMessage(isFirst: Bool){
+        // Scroll to the first or last message after a short delay for UI update
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2){
+            self.scrolledID = self.message.first
         }
     }
     
@@ -53,6 +73,8 @@ class ChatViewModel: ObservableObject{
     }
     
     func unsendMessage(idMessage: String){
-        service.unsendMessage(idMessage: idMessage, isLastMessage: self.message.last?.messageID == idMessage)
+        //In view ForEach(viewModel.message.reversed()) -> isLastMessage = self.message.first or self.message.reversed().last
+        service.unsendMessage(idMessage: idMessage, isLastMessage: self.message.first?.messageID == idMessage)
     }
 }
+

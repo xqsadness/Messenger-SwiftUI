@@ -57,15 +57,13 @@ class AuthService {
     }
     
     func signOut(){
+        setFcmToken(true)
+        UserDefaults.standard.set("", forKey: "fcmToken")
+        
         do{
             try Auth.auth().signOut()
             self.userSession = nil
             UserService.shared.currentUser = nil
-            
-//            Task{
-//                try await setFcmToken(true)
-//                UserDefaults.standard.set("", forKey: "fcmToken")
-//            }
         }catch{
             LocalNotification.shared.message("\(error.localizedDescription)", .warning)
             print("Failed to sign out: \(error.localizedDescription)")
@@ -95,11 +93,11 @@ class AuthService {
     private func loadCurrentUserData(){
         Task{
             try await UserService.shared.fetchCurrentUser()
-            try await setFcmToken(false)
+            setFcmToken(false)
         }
     }
     
-    private func setFcmToken(_ isRemove: Bool) async throws{
+    private func setFcmToken(_ isRemove: Bool){
         guard let uid = Auth.auth().currentUser?.uid else { return }
         
         let userRef = FirestoreContants.userCollection.document(uid)
@@ -109,7 +107,7 @@ class AuthService {
                 "fcmToken": isRemove ? "" : fcmToken
             ]
             
-            try await userRef.setData(dataToUpdate, merge: true)
+            userRef.setData(dataToUpdate, merge: true)
         }
     }
 }

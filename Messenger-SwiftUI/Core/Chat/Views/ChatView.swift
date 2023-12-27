@@ -14,7 +14,6 @@ struct ChatView: View {
     
     @EnvironmentObject var coordinator: Coordinator
     @Environment(\.dismiss) var dismiss
-    
     @StateObject var viewModel: ChatViewModel
     @FocusState private var focusedField: FocusedField?
     
@@ -38,11 +37,11 @@ struct ChatView: View {
             
             ScrollView(showsIndicators: false){
                 //header
-                header
+                    header
                 
                 //messages
                 VStack{
-                    ForEach(viewModel.message){ message in
+                    ForEach(viewModel.message.reversed()){ message in
                         ChatMessageCell(message: message,viewModel: viewModel)
                     }
                 }
@@ -50,6 +49,11 @@ struct ChatView: View {
                 .scrollDismissesKeyboard(.never)
             }
             .scrollPosition(id: .constant(viewModel.scrolledID?.id), anchor: .bottom)
+            .refreshable {
+                withAnimation {
+                    viewModel.loadMoreMessages()
+                }
+            }
 
             //message input
             Spacer()
