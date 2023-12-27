@@ -131,6 +131,9 @@ extension LoginView{
             }
             .padding(.top, 8)
         }
+        .onTapGesture {
+            Alerter.shared.alert = Alert(title: Text("This feature is being updated in the future"))
+        }
     }
     
     private var signupLink: some View{

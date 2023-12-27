@@ -22,6 +22,7 @@
 		DDB148B02B3023A600080396 /* Shimmer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB148AF2B3023A600080396 /* Shimmer.swift */; };
 		DDB7D35A2B3BD31B000C1855 /* NotificationSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB7D3592B3BD31B000C1855 /* NotificationSettingView.swift */; };
 		DDB7D35C2B3C115D000C1855 /* NotificationSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB7D35B2B3C115D000C1855 /* NotificationSettingViewModel.swift */; };
+		DDB7D35E2B3C1914000C1855 /* Alerter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB7D35D2B3C1914000C1855 /* Alerter.swift */; };
 		DDBBF5882B2A9115002F0C94 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBBF5872B2A9115002F0C94 /* ContentViewModel.swift */; };
 		DDC35EEC2B32C7F200A20DDE /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = DDC35EEB2B32C7F200A20DDE /* Kingfisher */; };
 		DDC6DAB22B2BED9C007828ED /* NewMessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC6DAB12B2BED9C007828ED /* NewMessageViewModel.swift */; };
@@ -110,6 +111,7 @@
 		DDB148AF2B3023A600080396 /* Shimmer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shimmer.swift; sourceTree = "<group>"; };
 		DDB7D3592B3BD31B000C1855 /* NotificationSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettingView.swift; sourceTree = "<group>"; };
 		DDB7D35B2B3C115D000C1855 /* NotificationSettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettingViewModel.swift; sourceTree = "<group>"; };
+		DDB7D35D2B3C1914000C1855 /* Alerter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerter.swift; sourceTree = "<group>"; };
 		DDBBF5872B2A9115002F0C94 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 		DDC6DAB12B2BED9C007828ED /* NewMessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMessageViewModel.swift; sourceTree = "<group>"; };
 		DDC6DAB32B2BF78B007828ED /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
@@ -202,6 +204,7 @@
 				DDE0F46D2B2AEE980089F94C /* LocalNotification.swift */,
 				DDC6DABE2B2C40A6007828ED /* Constant.swift */,
 				DDE9AA462B3966CE00713B39 /* PushNotificationSender.swift */,
+				DDB7D35D2B3C1914000C1855 /* Alerter.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -688,6 +691,7 @@
 				DDB7D35A2B3BD31B000C1855 /* NotificationSettingView.swift in Sources */,
 				DDC6DABD2B2C3F6B007828ED /* ChatService.swift in Sources */,
 				DDF1A03B2B368A3E00146A60 /* ForgotPasswordViewModel.swift in Sources */,
+				DDB7D35E2B3C1914000C1855 /* Alerter.swift in Sources */,
 				DDB7D35C2B3C115D000C1855 /* NotificationSettingViewModel.swift in Sources */,
 				DDC728272B293CA800B068E6 /* InboxView.swift in Sources */,
 				DD09E8C32B28396400235491 /* Appcontroller.swift in Sources */,

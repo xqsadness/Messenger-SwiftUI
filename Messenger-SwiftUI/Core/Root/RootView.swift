@@ -10,6 +10,7 @@ import SwiftUI
 struct RootView: View{
     @StateObject var coordinator = Coordinator.shared
     @StateObject var appController = AppController.instance
+    @StateObject var alerter: Alerter = Alerter.shared
     
     var body: some View{
         NavigationStack(path: $coordinator.path) {
@@ -17,6 +18,7 @@ struct RootView: View{
                 ContentView()
             }
             .environmentObject(coordinator)
+            .environmentObject(alerter)
             .navigationBarHidden(true)
             //navigation 
             .navigationDestination(for: Page.self) { page in
@@ -46,6 +48,9 @@ struct RootView: View{
             }
             .fullScreenCover(item: $coordinator.fullScreenCover) { fullScreencover in
                 coordinator.build(fullScreenCover: fullScreencover)
+            }
+            .alert(isPresented: $alerter.isShowingAlert) {
+                alerter.alert ?? Alert(title: Text(""))
             }
         }
         .onReceive(NotificationCenter.default.publisher(for: Notification.Name("PushMessage"))) { (output) in

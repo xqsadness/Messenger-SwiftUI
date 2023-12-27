@@ -79,11 +79,11 @@ struct ProfileView: View {
                 isShowDarkMode.toggle()
             }
         case .activeStatus:
-            print(option)
+            Alerter.shared.alert = Alert(title: Text("This feature is being updated in the future"), dismissButton: .default(Text("OK")))
         case .accessibility:
-            print(option)
+            Alerter.shared.alert = Alert(title: Text("This feature is being updated in the future"))
         case .privacy:
-            print(option)
+            Alerter.shared.alert = Alert(title: Text("This feature is being updated in the future"))
         case .notifications:
             coordinator.push(.notificationSettingView)
         }
