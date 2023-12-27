@@ -71,7 +71,7 @@ class ChatViewModel: ObservableObject{
     }
     
     func unsendMessage(idMessage: String){
-        //In view ForEach(viewModel.message.reversed()) -> isLastMessage = self.message.first or self.message.reversed().last
+        //Because In Chat view ForEach(viewModel.message.REVERSED()) so -> isLastMessage = self.message.first or self.message.reversed().last
         service.unsendMessage(idMessage: idMessage, isLastMessage: self.message.first?.messageID == idMessage)
     }
 }

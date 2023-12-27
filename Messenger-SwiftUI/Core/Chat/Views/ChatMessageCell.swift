@@ -20,27 +20,10 @@ struct ChatMessageCell: View {
         HStack{
             if message.isFromCurrentUser{
                 Spacer()
-//                timeMessage(size: UIScreen.main.bounds.width / 1.5, alignment: .trailing)
                 
-                if message.isRecalled{
-                    unsendMessageText(text: "You unsend a message", size: UIScreen.main.bounds.width / 1.5, alignment: .trailing)
-                }else{
-                    messageText(bgr: Color(.systemBlue), fgr: .white, size: UIScreen.main.bounds.width / 1.5, alignment: .trailing)
-                }
+                messageFromCurrenUser
             }else{
-//                timeMessage(size: .infinity, alignment: .leading)
-                
-                HStack(alignment: .bottom, spacing: 8){
-                    CircularProfileImageView(user: message.user, size: .xxSmall)
-                    
-                    if message.isRecalled{
-                        unsendMessageText(text: "\(message.user?.firstName ?? "unsend a message") unsend a message", size: UIScreen.main.bounds.width / 1.75, alignment: .leading)
-                    }else{
-                        messageText(bgr: Color(.systemGray5), fgr: .text, size: UIScreen.main.bounds.width / 1.75, alignment: .leading)
-                    }
-                    
-                    Spacer()
-                }
+                messageFromPartner
             }
         }
         .padding(.horizontal, 8)
@@ -49,6 +32,13 @@ struct ChatMessageCell: View {
                 .opacity(phase.isIdentity ? 1 : 0)
                 .scaleEffect(phase.isIdentity ? 1 : 0.75)
                 .blur(radius: phase.isIdentity ? 0 : 10)
+        }
+        .opacity(isAppeared ? 1 : 0)
+        .offset(x: isAppeared ? 0 : -50)
+        .onAppear{
+            withAnimation {
+                isAppeared = true
+            }
         }
         .alert(isPresented: $showingAlertUnsend) {
             Alert(
@@ -68,13 +58,6 @@ struct ChatMessageCell: View {
                 )
             )
         }
-        .opacity(isAppeared ? 1 : 0)
-        .offset(x: isAppeared ? 0 : -50)
-        .onAppear{
-            withAnimation {
-                isAppeared = true
-            }
-        }
     }
     
     @ViewBuilder
@@ -92,6 +75,48 @@ struct ChatMessageCell: View {
 }
 
 extension ChatMessageCell{
+    
+    private var messageFromCurrenUser: some View{
+        VStack{
+            timeMessage(size: UIScreen.main.bounds.width / 1.5, alignment: .trailing)
+            
+            if message.isRecalled{
+                unsendMessageText(text: "You unsend a message", size: UIScreen.main.bounds.width / 1.5, alignment: .trailing)
+            }else{
+                messageText(bgr: Color(.systemBlue), fgr: .white, size: UIScreen.main.bounds.width / 1.5, alignment: .trailing)
+            }
+        }
+        .onTapGesture {
+            withAnimation {
+                isShowTime.toggle()
+            }
+        }
+    }
+    
+    private var messageFromPartner: some View{
+        HStack(alignment: .bottom, spacing: 8){
+            CircularProfileImageView(user: message.user, size: .xxSmall)
+            
+            VStack{
+                if message.isRecalled{
+                    timeMessage(size: UIScreen.main.bounds.width / 1.75, alignment: .leading)
+                    
+                    unsendMessageText(text: "\(message.user?.firstName ?? "unsend a message") unsend a message", size: UIScreen.main.bounds.width / 1.75, alignment: .leading)
+                }else{
+                    timeMessage(size: .infinity, alignment: .leading)
+                    
+                    messageText(bgr: Color(.systemGray5), fgr: .text, size: .infinity, alignment: .leading)
+                }
+            }
+            
+            Spacer()
+        }
+        .onTapGesture {
+            withAnimation {
+                isShowTime.toggle()
+            }
+        }
+    }
     
     private var shapeBubble: some Shape{
         if message.isFromCurrentUser{
@@ -112,11 +137,6 @@ extension ChatMessageCell{
                 contextMenu
             }
             .frame(maxWidth: size, alignment: alignment)
-            .onTapGesture {
-                withAnimation {
-                    isShowTime.toggle()
-                }
-            }
     }
     
     private var contextMenu: some View{
@@ -156,13 +176,13 @@ extension ChatMessageCell{
     }
     
     private func timeMessage(size: CGFloat, alignment: Alignment) -> some View{
-        VStack{
+        Group{
             if isShowTime{
                 Text(message.timestampString)
                     .font(.regular(size: 13))
-                    .foregroundStyle(.text)
+                    .foregroundStyle(.text).opacity(0.6)
                     .frame(maxWidth: size, alignment: alignment)
-                    .padding(.vertical,5)
+                    .padding(.vertical,2)
             }
         }
     }
