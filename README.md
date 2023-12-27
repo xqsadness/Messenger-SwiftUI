@@ -30,12 +30,12 @@ Clone this repo and delete GoogleService-Info in the project for add your fireba
 <p> - Highlight unread messages </p>
 <p> - Unsend message </p>
 <p> - Forgot password </p>
+<p> - Push notification </p>
+<p> - Paging messages </p>
 <p> - ... </p>
 <h2> Future  features </h2>
 <p> - Send picture messages </p>
 <p> - Update status </p>
-<p> - Push notification </p>
-<p> - Paging messages </p>
 <p> - Displaying users currently active in real-time </p>
 <p> - ... </p>
 
