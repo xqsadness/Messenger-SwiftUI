@@ -16,7 +16,7 @@ class ChatViewModel: ObservableObject{
     
     let service: ChatService
     private var startAfter: Timestamp? = nil
-    private var limit = 30
+    private var limit = 20
     
     init(user: User) {
         self.service = ChatService(chatPartner: user)
@@ -35,16 +35,14 @@ class ChatViewModel: ObservableObject{
                     if isSend {
                         // If sending a message, insert the message at the beginning of the list
                         self.message.insert(contentsOf: messages, at: 0)
-                        
-                        self.scrollToMessage(isFirst: true)
+                        self.message.removeLast()
                     } else {
                         // If not sending a message, append the message to the end of the list
                         self.message.append(contentsOf: messages)
-                        
-                        self.scrollToMessage(isFirst: false)
                     }
                 }
             }
+            self.scrollToMessage()
         }
     }
     
@@ -53,11 +51,11 @@ class ChatViewModel: ObservableObject{
         obeserveMessages()
     }
     
-    func scrollToMessage(isFirst: Bool){
+    func scrollToMessage(){
         // Scroll to the first or last message after a short delay for UI update
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2){
-            self.scrolledID = self.message.first
-        }
+        //        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2){
+        self.scrolledID = self.message.first
+        //        }
     }
     
     func sendMessage(){

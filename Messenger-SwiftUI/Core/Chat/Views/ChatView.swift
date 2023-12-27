@@ -37,7 +37,7 @@ struct ChatView: View {
             
             ScrollView(showsIndicators: false){
                 //header
-                    header
+                header
                 
                 //messages
                 VStack{
@@ -62,7 +62,6 @@ struct ChatView: View {
         }
         .onAppear{
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.1){
-                viewModel.scrolledID = viewModel.message.last
                 if lastMesage?.unread == true{
                     viewModel.updateUnreadMessage(lastMesage: lastMesage)
                 }
