@@ -35,7 +35,10 @@ class ChatViewModel: ObservableObject{
                     if isSend {
                         // If sending a message, insert the message at the beginning of the list
                         self.message.insert(contentsOf: messages, at: 0)
-                        self.message.removeLast()
+                        // If messages > limit message then removeLast
+                        if self.message.count > self.limit{
+                            self.message.removeLast()
+                        }
                     } else {
                         // If not sending a message, append the message to the end of the list
                         self.message.append(contentsOf: messages)
