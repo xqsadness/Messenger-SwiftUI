@@ -59,7 +59,7 @@ struct ChatView: View {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
                 let currentId = UserService.shared.currentUser?.id
                 //Because In Chat view ForEach(viewModel.message.REVERSED()) so -> lastMesage = message.filter{}.first or message.filter{}.reversed().last
-                var lastMesage: Message? = viewModel.message.filter({ $0.toId == currentId }).first ?? nil
+                let lastMesage: Message? = viewModel.message.filter({ $0.toId == currentId }).first ?? nil
                 
                 if lastMesage?.unread == true{
                     viewModel.updateUnreadMessage(lastMesage: lastMesage)

@@ -12,14 +12,14 @@ import FirebaseMessaging
 
 class AppDelegate: NSObject, UIApplicationDelegate {
     
-    func application(_ application: UIApplication,
-                     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         FirebaseApp.configure()
         
         configPushNotification(application: application)
         
         return true
     }
+
 }
 
 @main
@@ -68,8 +68,7 @@ extension AppDelegate:MessagingDelegate, UNUserNotificationCenterDelegate {
         // Note: This callback is fired at each app startup and whenever a new token is generated.
     }
     
-    func application(application: UIApplication,
-                     didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         Messaging.messaging().apnsToken = deviceToken
     }
     

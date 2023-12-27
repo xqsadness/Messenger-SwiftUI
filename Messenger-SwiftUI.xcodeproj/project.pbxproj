@@ -20,6 +20,7 @@
 		DD09E8DA2B28472F00235491 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD09E8D92B28472F00235491 /* RegistrationView.swift */; };
 		DDAE12A92B35858F00E03530 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDAE12A82B35858E00E03530 /* Launch Screen.storyboard */; };
 		DDB148B02B3023A600080396 /* Shimmer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB148AF2B3023A600080396 /* Shimmer.swift */; };
+		DDB7D35A2B3BD31B000C1855 /* NotificationSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB7D3592B3BD31B000C1855 /* NotificationSettingView.swift */; };
 		DDBBF5882B2A9115002F0C94 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBBF5872B2A9115002F0C94 /* ContentViewModel.swift */; };
 		DDC35EEC2B32C7F200A20DDE /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = DDC35EEB2B32C7F200A20DDE /* Kingfisher */; };
 		DDC6DAB22B2BED9C007828ED /* NewMessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC6DAB12B2BED9C007828ED /* NewMessageViewModel.swift */; };
@@ -106,6 +107,7 @@
 		DD09E8D92B28472F00235491 /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
 		DDAE12A82B35858E00E03530 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		DDB148AF2B3023A600080396 /* Shimmer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shimmer.swift; sourceTree = "<group>"; };
+		DDB7D3592B3BD31B000C1855 /* NotificationSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettingView.swift; sourceTree = "<group>"; };
 		DDBBF5872B2A9115002F0C94 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 		DDC6DAB12B2BED9C007828ED /* NewMessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMessageViewModel.swift; sourceTree = "<group>"; };
 		DDC6DAB32B2BF78B007828ED /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
@@ -321,6 +323,7 @@
 			children = (
 				DDC728332B29514900B068E6 /* ProfileView.swift */,
 				DDFBC90D2B2D4B9300A050E9 /* ChangeDarkLightView.swift */,
+				DDB7D3592B3BD31B000C1855 /* NotificationSettingView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -679,6 +682,7 @@
 				DDC7282F2B2947F400B068E6 /* NewMessageView.swift in Sources */,
 				DD09E8D72B283EFC00235491 /* Views.swift in Sources */,
 				DDD1E2362B28141A0047F456 /* Messenger_SwiftUIApp.swift in Sources */,
+				DDB7D35A2B3BD31B000C1855 /* NotificationSettingView.swift in Sources */,
 				DDC6DABD2B2C3F6B007828ED /* ChatService.swift in Sources */,
 				DDF1A03B2B368A3E00146A60 /* ForgotPasswordViewModel.swift in Sources */,
 				DDC728272B293CA800B068E6 /* InboxView.swift in Sources */,

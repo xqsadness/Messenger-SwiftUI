@@ -36,7 +36,7 @@ struct ChatService{
         
         //Send notification
         if let fcmToken = chatPartner.fcmToken{
-            PushNotificationSender.shared.sendPushNotificationProduct(to: fcmToken, title: "You have a new message", body: messageText)
+            PushNotificationSender.shared.sendPushNotificationProduct(to: fcmToken, title: "You have a new message", body: "\(UserService.shared.currentUser?.firstName ?? ""): \(messageText)")
         }
     }
     

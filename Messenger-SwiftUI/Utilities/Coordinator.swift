@@ -3,7 +3,7 @@ import Foundation
 import SwiftUI
 
 enum Page: String, Identifiable{
-    case NONE, loginView, registrationView, forgotPasswordView
+    case NONE, loginView, registrationView, forgotPasswordView, notificationSettingView
     
     var id: String{
         return self.rawValue
@@ -79,6 +79,12 @@ class Coordinator: ObservableObject{
             ForgotPasswordView()
                 .navigationBarBackButtonHidden()
                 .environmentObject(Coordinator.shared)
+            
+        case .notificationSettingView:
+            NotificationSettingView()
+                .navigationBarBackButtonHidden()
+                .environmentObject(Coordinator.shared)
+            
         default:
             EmptyView()
         }
@@ -97,7 +103,7 @@ class Coordinator: ObservableObject{
     @ViewBuilder
     func build(fullScreenCover: FullScreenCover) -> some View{
         switch fullScreenCover{
-  
+            
         default:
             EmptyView()
         }

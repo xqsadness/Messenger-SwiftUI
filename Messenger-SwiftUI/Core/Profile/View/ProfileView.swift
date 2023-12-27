@@ -85,9 +85,7 @@ struct ProfileView: View {
         case .privacy:
             print(option)
         case .notifications:
-            let token = "eHbP2wauyUmgk8A_1V0Enu:APA91bExjvfQ2qDcrh1MXsB8W1NFXvBWQckj5ylFVk4AMQaRvi6BokdP7CJna2P_J4vYWZOX-nBOOl_0CjDqFJ-j9h4GTBoq0vxqzndH8-jFnPp1l2901u6d2Zkd0KFl9R__7EM1vuyR"
-            
-            PushNotificationSender.shared.sendPushNotificationProduct(to: token, title: "Push  Notification", body: "Test notification")
+            coordinator.push(.notificationSettingView)
         }
     }
 }
