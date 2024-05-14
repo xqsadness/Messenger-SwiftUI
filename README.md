@@ -40,3 +40,5 @@ Clone this repo and delete GoogleService-Info in the project for add your fireba
 <p> - ... </p>
 
 Updating ... !
+
+[Open an issue](https://github.com/xqsadness/Messenger-SwiftUI/issues) for issues with the existing codebase.
