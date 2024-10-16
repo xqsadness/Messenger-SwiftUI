@@ -6,6 +6,12 @@ Demo:
 
 I will update new features and fix some errors backlog in the future!
 
+<p style="display: inline;">
+  <i> Update 16/10/2024 </i>
+  <h2 style="display: inline;"> Push notifications have been disabled because my developer account has expired. You will need an Apple Developer account to use this feature. </h2>
+  <a href="https://learn.buildfire.com/en/articles/5760994-how-to-set-up-your-apple-push-notification-key-for-your-ios-firebase-certificate" style="display: inline;"> See more </a>.
+</p>
+
 --------------------------------------------------------------------------------------------------------------------------------------------
 
 Setup Firebase: https://firebase.google.com/docs/ios/setup
